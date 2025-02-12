@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Fullhouse Vintage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Fullhouse Vintage Logo">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-form">
+        <h2>Contacto</h2>
+        <form action="base.php" method="POST" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asunto">Asunto:</label>
+                <select id="asunto" name="asunto" required>
+                    <option value="">Seleccione un asunto</option>
+                    <option value="consulta">Consulta general</option>
+                    <option value="pedido">Información sobre pedido</option>
+                    <option value="reclamacion">Reclamación</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Preferencias de contacto:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="telefono" name="preferencias[]" value="telefono">
+                    <label for="telefono">Teléfono</label>
+                    
+                    <input type="checkbox" id="email-check" name="preferencias[]" value="email">
+                    <label for="email-check">Email</label>
+                    
+                    <input type="checkbox" id="whatsapp" name="preferencias[]" value="whatsapp">
+                    <label for="whatsapp">WhatsApp</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Horario preferido:</label>
+                <div class="radio-group">
+                    <input type="radio" id="manana" name="horario" value="manana">
+                    <label for="manana">Mañana</label>
+                    
+                    <input type="radio" id="tarde" name="horario" value="tarde">
+                    <label for="tarde">Tarde</label>
+                    
+                    <input type="radio" id="noche" name="horario" value="noche">
+                    <label for="noche">Noche</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Enviar</button>
+                <button type="reset">Limpiar</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="form_validation.js"></script>
+</body>
+</html>
