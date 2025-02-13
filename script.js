@@ -116,6 +116,73 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar primer slide y comenzar
     showSlide(currentSlide);
     startSlideShow();
+    
+    // Funcionalidad para las pestañas del perfil
+    const tabButtons = document.querySelectorAll('.nav-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remover clase active de todos los botones y contenidos
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Añadir clase active al botón clickeado
+            button.classList.add('active');
+
+            // Mostrar el contenido correspondiente
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // Funcionalidad para el formulario de perfil
+    const profileForm = document.querySelector('.profile-form');
+    if (profileForm) {
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Cambios guardados correctamente');
+        });
+    }
+
+    // Funcionalidad para los botones de dirección
+    const addressActions = document.querySelectorAll('.address-actions button');
+    addressActions.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const action = e.target.classList.contains('edit-btn') ? 'editar' : 'eliminar';
+            const addressCard = e.target.closest('.address-card');
+            
+            if (action === 'editar') {
+                // Lógica para editar
+                console.log('Editando dirección...');
+            } else {
+                // Lógica para eliminar
+                if (confirm('¿Estás seguro de que deseas eliminar esta dirección?')) {
+                    addressCard.remove();
+                }
+            }
+        });
+    });
+
+    // Funcionalidad para añadir nueva dirección
+    const addAddressBtn = document.querySelector('.add-address-btn');
+    if (addAddressBtn) {
+        addAddressBtn.addEventListener('click', () => {
+            alert('Formulario para añadir nueva dirección');
+            // Aquí iría la lógica para mostrar un modal o formulario
+        });
+    }
+
+    // Funcionalidad para los favoritos
+    const removeFavoriteButtons = document.querySelectorAll('.remove-favorite-btn');
+    removeFavoriteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const favoriteItem = e.target.closest('.favorite-item');
+            if (confirm('¿Eliminar este artículo de favoritos?')) {
+                favoriteItem.remove();
+            }
+        });
+    });
 });
 
 // Hacer que el logo se mueva al hacer scroll
