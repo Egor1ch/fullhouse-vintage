@@ -8,6 +8,11 @@
 
 </head>
 <body>
+    <!-- Splash screen -->
+    <div class="splash-screen">
+        <img src="logo-white.png" alt="Fullhouse Vintage Logo" class="splash-logo">
+    </div>
+
     <!-- Header permanece igual -->
     <header>
         <div class="logo-container">
@@ -28,23 +33,29 @@
             </ul>
         </nav>
 
-    <div class="header-icons">
-        <a href="#" class="icon-link">
-            <img src="search.png" alt="Buscar" class="header-icon">
-        </a>
-        <a href="#" class="icon-link">
-            <img src="user.png" alt="Perfil" class="header-icon">
-        </a>
-        <a href="#" class="icon-link">
-            <img src="shopping-cart.png" alt="Carrito" class="header-icon">
-        </a>
-    </div>
-
+        <div class="header-icons">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar...">
+                <a href="#" class="icon-link search-icon">
+                    <img src="search.png" alt="Buscar" class="header-icon">
+                </a>
+            </div>
+            <a href="#" class="icon-link">
+                <img src="shopping-cart.png" alt="Carrito" class="header-icon">
+            </a>
+            <a href="perfil.html" class="icon-link">
+                <img src="user.png" alt="Perfil" class="header-icon">
+            </a>
+        </div>
     </header>
 
     <!-- Reemplazar la sección hero-image con este nuevo carrusel -->
     <div class="fullscreen-carousel">
         <div class="carousel-container">
+            <div class="welcome-message">
+                <h1>BIENVENIDOS A <br> FULL HOUSE VINTAGE</h1>
+            </div>
+            <div class="carousel-overlay"></div>
             <div class="carousel-slide">
                 <img src="main1.jpg" alt="Slide 1">
             </div>
@@ -69,9 +80,16 @@
         </div>
     </div>
 
-    <!-- Slider mejorado -->
+    <!-- Nueva sección de exploración -->
+    <section class="explore-section">
+        <div class="explore-content">
+            <h2>Explora nuestra nueva colección</h2>
+            <p>Descubre piezas únicas que cuentan historias del pasado</p>
+            <a href="catalogo.html" class="explore-button">Ver colección</a>
+        </div>
+    </section>
+
     <section class="slider">
-        <h1>New arrivals</h1>
         <article>
             <div>
                 <ul>
@@ -92,11 +110,98 @@
         </article>
     </section>
 
+    <!-- Grid de categorías -->
+
+    <!-- Sección de destacados -->
+    <section class="featured-section">
+        <h2>Piezas destacadas</h2>
+        <div class="featured-grid">
+            <article class="featured-item">
+                <img src="3.jpeg" alt="Chaqueta vintage">
+                <h3>Chaqueta Denim 1970s</h3>
+                <p class="price">89,99 €</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </article>
+            <article class="featured-item">
+                <img src="2.jpeg" alt="Botas cowboy">
+                <h3>Botas Cowboy</h3>
+                <p class="price">129,99 €</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </article>
+            <article class="featured-item">
+                <img src="1.jpeg" alt="Bolso de cuero">
+                <h3>Bolso de Cuero</h3>
+                <p class="price">75,99 €</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </article>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Únete a nuestra comunidad vintage</h2>
+            <p>Recibe las últimas novedades y ofertas exclusivas</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico">
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+
     <!-- Aviso de cookies -->
     <div id="cookieNotice" class="cookieNotice">
         <p>Este sitio web utiliza cookies para mejorar su experiencia.</p>
         <button id="acceptCookies">Aceptar</button>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2010.</p>
+                <div class="social-links">
+                    <a href="#"><img src="fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="X.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul class="footer-links">
+                    <li><a href="nosotros.html">FAQ</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><a href="devoluciones.html">Devoluciones</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="footer-links">
+                    <li>📍 Calle Principal, 123</li>
+                    <li>📞 +34 123 456 789</li>
+                    <li>✉️ info@fullhousevintage.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

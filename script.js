@@ -1,3 +1,17 @@
+// Manejo de la splash screen
+document.addEventListener('DOMContentLoaded', function() {
+    const splashScreen = document.querySelector('.splash-screen');
+    
+    // Hacer que la splash screen desaparezca después de 2 segundos
+    setTimeout(() => {
+        splashScreen.classList.add('fade-out');
+        // Remover completamente después de la animación
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+        }, 500);
+    }, 2000);
+});
+
 // Variables para el slider
 let counter = 1;
 const totalSlides = 4;

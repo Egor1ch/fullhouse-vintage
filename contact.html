@@ -19,22 +19,25 @@
 
         <nav>
             <ul class="menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li><a href="contact.html">CONTACTO</a></li>
             </ul>
         </nav>
 
         <div class="header-icons">
-            <a href="#" class="icon-link">
-                <img src="search.png" alt="Buscar" class="header-icon">
-            </a>
-            <a href="#" class="icon-link">
-                <img src="user.png" alt="Perfil" class="header-icon">
-            </a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar...">
+                <a href="#" class="icon-link search-icon">
+                    <img src="search.png" alt="Buscar" class="header-icon">
+                </a>
+            </div>
             <a href="#" class="icon-link">
                 <img src="shopping-cart.png" alt="Carrito" class="header-icon">
+            </a>
+            <a href="perfil.html" class="icon-link">
+                <img src="user.png" alt="Perfil" class="header-icon">
             </a>
         </div>
     </header>
@@ -43,7 +46,7 @@
     <section class="contact-section">
         <h1>Contáctanos</h1>
         <div class="contact-container">
-            <form class="contact-form">
+            <form class="contact-form" onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
@@ -55,8 +58,52 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="asunto">Asunto:</label>
-                    <input type="text" id="asunto" name="asunto" required>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" 
+                        pattern="[0-9]{9}" 
+                        title="Introduce un número de teléfono válido (9 dígitos)" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-consulta">Tipo de consulta:</label>
+                    <select id="tipo-consulta" name="tipo-consulta" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="producto">Información de producto</option>
+                        <option value="pedido">Estado de pedido</option>
+                        <option value="devolucion">Devolución</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferencia de contacto:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="contacto" value="email" required> Email
+                        </label>
+                        <label>
+                            <input type="radio" name="contacto" value="telefono"> Teléfono
+                        </label>
+                        <label>
+                            <input type="radio" name="contacto" value="whatsapp"> WhatsApp
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Términos y condiciones:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="aceptarTodo" name="aceptarTodo"> Acepto la política de publicidad
+                        </label>
+                        <label>
+                            <input type="checkbox" id="politicaPrivacidad" name="interes" value="privacidad" required> Acepto la política de privacidad
+                        </label>
+                        <label>
+                            <input type="checkbox" id="newsletter" name="interes" value="newsletter"> Acepto recibir los newsletters de Full House Vintage
+                        </label>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -65,18 +112,59 @@
                 </div>
 
                 <div class="form-buttons">
-                    <button type="submit">Enviar</button>
-                    <button type="reset">Limpiar</button>
+                    <button type="submit">Enviar consulta</button>
+                    <button type="reset">Limpiar formulario</button>
                 </div>
             </form>
         </div>
     </section>
 
-    <!-- Aviso de cookies -->
-    <div id="cookieNotice" class="cookieNotice">
-        <p>Este sitio web utiliza cookies para mejorar su experiencia.</p>
-        <button id="acceptCookies">Aceptar</button>
-    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2010.</p>
+                <div class="social-links">
+                    <a href="#"><img src="fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="X.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul class="footer-links">
+                    <li><a href="nosotros.html">FAQ</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><a href="devoluciones.html">Devoluciones</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="footer-links">
+                    <li>📍 Calle Principal, 123</li>
+                    <li>📞 +34 123 456 789</li>
+                    <li>✉️ info@fullhousevintage.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
