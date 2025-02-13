@@ -41,6 +41,67 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieNotice.style.display = 'none';
         localStorage.setItem('cookiesAccepted', 'true');
     });
+
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Iniciar el carrusel automático
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 5000); // Cambiar cada 5 segundos
+    }
+
+    // Detener el carrusel automático al interactuar
+    function stopSlideShow() {
+        clearInterval(slideInterval);
+    }
+
+    // Event listeners
+    prevButton.addEventListener('click', () => {
+        stopSlideShow();
+        prevSlide();
+        startSlideShow();
+    });
+
+    nextButton.addEventListener('click', () => {
+        stopSlideShow();
+        nextSlide();
+        startSlideShow();
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopSlideShow();
+            currentSlide = index;
+            showSlide(currentSlide);
+            startSlideShow();
+        });
+    });
+
+    // Mostrar primer slide y comenzar
+    showSlide(currentSlide);
+    startSlideShow();
 });
 
 // Hacer que el logo se mueva al hacer scroll

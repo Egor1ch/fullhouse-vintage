@@ -8,9 +8,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Fullhouse Vintage Logo">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="logo-white.png" alt="Fullhouse Vintage Logo">
+            </div>
+            <div class="logo-text">
+                <h3>FULL HOUSE VINTAGE</h3>
+            </div>
         </div>
+
         <nav>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -19,71 +25,59 @@
                 <li><a href="contact.html">Contacto</a></li>
             </ul>
         </nav>
+
+        <div class="header-icons">
+            <a href="#" class="icon-link">
+                <img src="search.png" alt="Buscar" class="header-icon">
+            </a>
+            <a href="#" class="icon-link">
+                <img src="user.png" alt="Perfil" class="header-icon">
+            </a>
+            <a href="#" class="icon-link">
+                <img src="shopping-cart.png" alt="Carrito" class="header-icon">
+            </a>
+        </div>
     </header>
 
-    <main class="contact-form">
-        <h2>Contacto</h2>
-        <form action="base.php" method="POST" onsubmit="return validateForm()">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="asunto">Asunto:</label>
-                <select id="asunto" name="asunto" required>
-                    <option value="">Seleccione un asunto</option>
-                    <option value="consulta">Consulta general</option>
-                    <option value="pedido">Información sobre pedido</option>
-                    <option value="reclamacion">Reclamación</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Preferencias de contacto:</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="telefono" name="preferencias[]" value="telefono">
-                    <label for="telefono">Teléfono</label>
-                    
-                    <input type="checkbox" id="email-check" name="preferencias[]" value="email">
-                    <label for="email-check">Email</label>
-                    
-                    <input type="checkbox" id="whatsapp" name="preferencias[]" value="whatsapp">
-                    <label for="whatsapp">WhatsApp</label>
+    <section class="contact-section">
+        <h1>Contáctanos</h1>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label>Horario preferido:</label>
-                <div class="radio-group">
-                    <input type="radio" id="manana" name="horario" value="manana">
-                    <label for="manana">Mañana</label>
-                    
-                    <input type="radio" id="tarde" name="horario" value="tarde">
-                    <label for="tarde">Tarde</label>
-                    
-                    <input type="radio" id="noche" name="horario" value="noche">
-                    <label for="noche">Noche</label>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-            </div>
+                <div class="form-group">
+                    <label for="asunto">Asunto:</label>
+                    <input type="text" id="asunto" name="asunto" required>
+                </div>
 
-            <div class="form-buttons">
-                <button type="submit">Enviar</button>
-                <button type="reset">Limpiar</button>
-            </div>
-        </form>
-    </main>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
 
-    <script src="form_validation.js"></script>
+                <div class="form-buttons">
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Aviso de cookies -->
+    <div id="cookieNotice" class="cookieNotice">
+        <p>Este sitio web utiliza cookies para mejorar su experiencia.</p>
+        <button id="acceptCookies">Aceptar</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
