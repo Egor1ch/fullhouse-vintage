@@ -1519,6 +1519,49 @@ nav {
     text-align: center;
     padding: 2rem;
     background: var(--color-light);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+}
+
+.value-card img {
+    width: 220px; /* Aumentado de 180px */
+    height: 220px; /* Aumentado de 180px */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Media query para móviles */
+@media (max-width: 768px) {
+    .value-card img {
+        width: 180px; /* Aumentado de 150px */
+        height: 180px; /* Aumentado de 150px */
+    }
+}
+
+.value-card h3 {
+    color: var(--color-primary);
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.value-card p {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Media query para móviles */
+@media (max-width: 768px) {
+    .value-card img {
+        width: 120px; /* Tamaño más pequeño en móviles */
+        height: 120px;
+    }
 }
 
 /* Estilos para el Catálogo */
