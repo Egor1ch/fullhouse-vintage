@@ -392,41 +392,51 @@ async function testSupabaseConnection() {
 // Función para cargar los productos
 async function cargarProductos() {
     try {
-        // Mostrar loader
-        loader.style.display = 'block'
+        const loader = document.getElementById('loader');
+        const featuredGrid = document.getElementById('featured-grid');
         
-        // Obtener productos de Supabase
+        if (!featuredGrid) return; // Si no existe el contenedor, salir
+        
+        loader.style.display = 'block';
+        
         const { data: productos, error } = await supabase
             .from('productos')
             .select('*')
+            .limit(4); // Limitamos a 4 productos destacados
 
-        if (error) throw error
+        if (error) throw error;
 
         // Limpiar el contenedor
-        productosContainer.innerHTML = ''
+        featuredGrid.innerHTML = '';
 
         // Mostrar los productos
         productos.forEach(producto => {
             const productoCard = `
-                <div class="producto-card">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                <article class="featured-item">
+                    <img src="${producto.imagen || 'IMGs/placeholder.jpg'}" alt="${producto.nombre}">
                     <h3>${producto.nombre}</h3>
-                    <p class="precio">$${producto.precio}</p>
-                    <button onclick="verDetalles(${producto.id})">Ver Detalles</button>
-                </div>
-            `
-            productosContainer.innerHTML += productoCard
-        })
+                    <p class="price">${producto.precio} €</p>
+                    <a href="producto.html?id=${producto.id}" class="view-product">Ver producto</a>
+                    <button class="add-to-cart" data-id="${producto.id}">Añadir al carrito</button>
+                </article>
+            `;
+            featuredGrid.insertAdjacentHTML('beforeend', productoCard);
+        });
     } catch (error) {
-        console.error('Error:', error.message)
-        productosContainer.innerHTML = `
-            <div class="error">
-                Error al cargar los productos. Por favor, intenta más tarde.
-            </div>
-        `
+        console.error('Error:', error.message);
+        const featuredGrid = document.getElementById('featured-grid');
+        if (featuredGrid) {
+            featuredGrid.innerHTML = `
+                <div class="error">
+                    Error al cargar los productos. Por favor, intenta más tarde.
+                </div>
+            `;
+        }
     } finally {
-        // Ocultar loader
-        loader.style.display = 'none'
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.display = 'none';
+        }
     }
 }
 

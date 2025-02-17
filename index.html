@@ -119,16 +119,11 @@
     <!-- Sección de destacados -->
     <section class="featured-section">
         <h2>Piezas destacadas</h2>
-        <div class="featured-grid">
-            {{#each productos_destacados}}
-            <article class="featured-item">
-                <img src="{{this.imagen_url}}" alt="{{this.nombre}}">
-                <h3>{{this.nombre}}</h3>
-                <p class="price">{{this.precio}} €</p>
-                <a href="producto.html?id={{this.id}}" class="view-product">Ver producto</a>
-                <button class="add-to-cart" data-id="{{this.id}}">Añadir al carrito</button>
-            </article>
-            {{/each}}
+        <div id="featured-grid" class="featured-grid">
+            <!-- Los productos se cargarán dinámicamente aquí -->
+            <div id="loader" style="text-align: center; width: 100%;">
+                <p>Cargando productos...</p>
+            </div>
         </div>
     </section>
 
