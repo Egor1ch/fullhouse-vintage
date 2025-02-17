@@ -175,5 +175,56 @@
         <button class="modal-prev">&lt;</button>
         <button class="modal-next">&gt;</button>
     </div>
+
+    <script>
+        async function loadProductDetails() {
+            try {
+                // Obtener el ID del producto de la URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('id');
+
+                // Cargar los datos del producto
+                const response = await fetch('data/products.json');
+                const data = await response.json();
+                
+                // Encontrar el producto específico
+                const product = data.products.find(p => p.id == productId);
+                
+                if (!product) {
+                    window.location.href = 'catalogo.html'; // Redirigir si no se encuentra el producto
+                    return;
+                }
+
+                // Actualizar el título de la página
+                document.title = `${product.name} - Fullhouse Vintage`;
+
+                // Actualizar los elementos de la página con los datos del producto
+                document.querySelector('.product-title').textContent = product.name;
+                document.querySelector('.product-price').textContent = `${product.price.toFixed(2)}€`;
+                document.querySelector('.product-description p').textContent = product.description;
+                document.querySelector('.main-image img').src = product.image;
+                document.querySelector('.main-image img').alt = product.name;
+
+                // Actualizar metadatos adicionales si existen
+                if (product.condition) document.querySelector('.product-condition').textContent = `Estado: ${product.condition}`;
+                if (product.decade) document.querySelector('.product-era').textContent = `Década: ${product.decade}`;
+                if (product.size) document.querySelector('.product-size').textContent = `Talla: ${product.size}`;
+
+                // Actualizar detalles adicionales si existen
+                const detailsList = document.querySelector('.product-details ul');
+                if (detailsList && product.details) {
+                    detailsList.innerHTML = Object.entries(product.details)
+                        .map(([key, value]) => `<li>${key}: ${value}</li>`)
+                        .join('');
+                }
+
+            } catch (error) {
+                console.error('Error al cargar los detalles del producto:', error);
+            }
+        }
+
+        // Cargar los detalles del producto cuando la página se carga
+        document.addEventListener('DOMContentLoaded', loadProductDetails);
+    </script>
 </body>
 </html>

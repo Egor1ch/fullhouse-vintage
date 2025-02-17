@@ -1,0 +1,38 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Chaqueta Vintage 70s",
+      "description": "Chaqueta original de los años 70 en excelente estado",
+      "price": 89.99,
+      "image": "IMGs/1.jpeg",
+      "category": "ropa",
+      "decade": "70s",
+      "condition": "Excelente",
+      "size": "M",
+      "details": {
+        "material": "Cuero",
+        "marca": "Vintage Original",
+        "color": "Marrón",
+        "referencia": "CH70-001"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      }
+    }
+  ]
+}
