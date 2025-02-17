@@ -367,6 +367,28 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey)
 const productosContainer = document.getElementById('productos')
 const loader = document.getElementById('loader')
 
+// Función para probar la conexión con Supabase
+async function testSupabaseConnection() {
+    try {
+        const { data, error } = await supabase
+            .from('productos')
+            .select('count')
+            .single();
+
+        if (error) throw error;
+
+        console.log('Conexión exitosa con Supabase');
+        document.getElementById('connectionStatus').textContent = '✅ Conectado a Supabase';
+        document.getElementById('connectionStatus').style.color = 'green';
+        return true;
+    } catch (error) {
+        console.error('Error de conexión con Supabase:', error.message);
+        document.getElementById('connectionStatus').textContent = '❌ Error de conexión con Supabase';
+        document.getElementById('connectionStatus').style.color = 'red';
+        return false;
+    }
+}
+
 // Función para cargar los productos
 async function cargarProductos() {
     try {
@@ -430,5 +452,8 @@ async function verDetalles(id) {
     }
 }
 
-// Cargar productos cuando la página se carga
-document.addEventListener('DOMContentLoaded', cargarProductos)
+// Ejecutar prueba de conexión cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    testSupabaseConnection();
+    cargarProductos();
+});
