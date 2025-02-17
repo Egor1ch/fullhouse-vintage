@@ -6,7 +6,13 @@
     <title>Fullhouse Vintage</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
-
+    <script>
+        // Inicializar Supabase globalmente
+        const supabaseUrl = 'https://eddrkybatnndihmxlrhi.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkZHJreWJhdG5uZGlobXhscmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MTI1MjMsImV4cCI6MjA1NTM4ODUyM30.7IXG-Ii6qkDfS5kZCopQ2P3Esq8tGVqpAMNNBwUbA6Y';
+        window.supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    </script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Splash screen -->
