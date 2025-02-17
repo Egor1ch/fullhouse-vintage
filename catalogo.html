@@ -10,7 +10,7 @@
     <header>
         <div class="logo-container">
             <div class="logo">
-                <img src="logo-white.png" alt="Fullhouse Vintage Logo">
+                <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
             </div>
             <div class="logo-text">
                 <h3>FULL HOUSE VINTAGE</h3>
@@ -30,14 +30,14 @@
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Buscar...">
                 <a href="#" class="icon-link search-icon">
-                    <img src="search.png" alt="Buscar" class="header-icon">
+                    <img src="IMGs/search.png" alt="Buscar" class="header-icon">
                 </a>
             </div>
             <a href="#" class="icon-link">
-                <img src="shopping-cart.png" alt="Carrito" class="header-icon">
+                <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
             </a>
             <a href="perfil.html" class="icon-link">
-                <img src="user.png" alt="Perfil" class="header-icon">
+                <img src="IMGs/user.png" alt="Perfil" class="header-icon">
             </a>
         </div>
     </header>
@@ -45,20 +45,19 @@
     <!-- Filtros y Búsqueda -->
     <section class="catalog-filters">
         <div class="filter-container">
-            <select class="filter-select">
+            <select class="filter-select" id="categoria">
                 <option value="">Categoría</option>
-                <option value="chaquetas">Chaquetas</option>
-                <option value="pantalones">Pantalones</option>
-                <option value="accesorios">Accesorios</option>
+                {{#each categorias}}
+                <option value="{{this.id}}">{{this.nombre}}</option>
+                {{/each}}
             </select>
-            <select class="filter-select">
+            <select class="filter-select" id="decada">
                 <option value="">Década</option>
-                <option value="60s">60s</option>
-                <option value="70s">70s</option>
-                <option value="80s">80s</option>
-                <option value="90s">90s</option>
+                {{#each decadas}}
+                <option value="{{this}}">{{this}}s</option>
+                {{/each}}
             </select>
-            <select class="filter-select">
+            <select class="filter-select" id="precio">
                 <option value="">Precio</option>
                 <option value="0-50">0-50€</option>
                 <option value="50-100">50-100€</option>
@@ -69,172 +68,28 @@
 
     <!-- Rejilla de productos -->
     <section class="products-grid">
-        <!-- Repetir para cada producto -->
+        {{#each productos}}
         <article class="product-card">
             <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
+                <img src="{{this.imagen_url}}" alt="{{this.nombre}}">
             </div>
             <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
+                <h3>{{this.nombre}}</h3>
+                <p class="price">{{this.precio}} €</p>
+                <a href="producto.html?id={{this.id}}" class="view-product">Ver producto</a>
+                <button class="add-to-cart" data-id="{{this.id}}">Añadir al carrito</button>
             </div>
         </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <article class="product-card">
-            <div class="product-image">
-                <img src="1.jpeg" alt="Producto vintage">
-                <div class="product-overlay">
-                    <button class="quick-view">Vista rápida</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Chaqueta Denim Vintage</h3>
-                <p class="price">89,99 €</p>
-                <button class="add-to-cart">Añadir al carrito</button>
-            </div>
-        </article>
-        <!-- ...más productos... -->
+        {{/each}}
     </section>
 
     <!-- Paginación -->
     <div class="pagination">
-        <button class="page-btn">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="page-btn">></button>
+        {{#each paginas}}
+        <button class="page-btn {{#if this.active}}active{{/if}}" data-page="{{this.numero}}">
+            {{this.numero}}
+        </button>
+        {{/each}}
     </div>
 
     <footer class="footer">
@@ -243,9 +98,9 @@
                 <h4>Sobre Nosotros</h4>
                 <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2010.</p>
                 <div class="social-links">
-                    <a href="#"><img src="fb.png" alt="Facebook" class="social-icon"></a>
-                    <a href="#"><img src="inst.png" alt="Instagram" class="social-icon"></a>
-                    <a href="#"><img src="X.png" alt="Twitter" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
                 </div>
             </div>
 
@@ -283,5 +138,44 @@
             <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        // Código para manejar los filtros
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                const filters = {
+                    categoria: document.getElementById('categoria').value,
+                    decada: document.getElementById('decada').value,
+                    precio: document.getElementById('precio').value
+                };
+                
+                updateURL(filters);
+                // Aquí irá la lógica para actualizar los productos según los filtros
+            });
+        });
+
+        // Función para actualizar la URL con los filtros
+        function updateURL(filters) {
+            const url = new URL(window.location);
+            Object.entries(filters).forEach(([key, value]) => {
+                if (value) {
+                    url.searchParams.set(key, value);
+                } else {
+                    url.searchParams.delete(key);
+                }
+            });
+            window.history.pushState({}, '', url);
+        }
+
+        // Código para la paginación
+        document.querySelectorAll('.page-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const page = this.dataset.page;
+                const url = new URL(window.location);
+                url.searchParams.set('page', page);
+                window.location.href = url;
+            });
+        });
+    </script>
 </body>
 </html>

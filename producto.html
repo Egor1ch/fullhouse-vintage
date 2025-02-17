@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{nombre_producto}} - Fullhouse Vintage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
+            </div>
+            <div class="logo-text">
+                <h3>FULL HOUSE VINTAGE</h3>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li><a href="contact.html">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar...">
+                <a href="#" class="icon-link search-icon">
+                    <img src="IMGs/search.png" alt="Buscar" class="header-icon">
+                </a>
+            </div>
+            <a href="#" class="icon-link">
+                <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
+            </a>
+            <a href="perfil.html" class="icon-link">
+                <img src="IMGs/user.png" alt="Perfil" class="header-icon">
+            </a>
+        </div>
+    </header>
+
+    <main class="product-detail-page">
+        <div class="product-detail-container">
+            <!-- Galería de imágenes -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="{{imagen_principal}}" alt="{{nombre_producto}}">
+                </div>
+                <div class="thumbnail-gallery">
+                    {{#each imagenes_adicionales}}
+                    <img src="{{this}}" alt="{{nombre_producto}} vista {{@index}}" class="thumbnail">
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- Información del producto -->
+            <div class="product-info">
+                <h1 class="product-title">{{nombre_producto}}</h1>
+                <p class="product-price">{{precio}}€</p>
+                
+                <!-- Estado, década y talla -->
+                <div class="product-metadata">
+                    <span class="product-condition">Estado: {{estado}}</span>
+                    <span class="product-era">Década: {{decada}}</span>
+                    <span class="product-size">Talla: {{talla}}</span>
+                </div>
+
+                <!-- Selector de cantidad y botón de compra -->
+                <div class="purchase-options">
+                    <div class="quantity-selector">
+                        <label for="quantity">Cantidad:</label>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{stock}}">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                    <button class="add-to-wishlist-btn">♡ Añadir a favoritos</button>
+                </div>
+
+                <!-- Descripción del producto -->
+                <div class="product-description">
+                    <h2>Descripción</h2>
+                    <p>{{descripcion}}</p>
+                </div>
+
+                <!-- Detalles y medidas -->
+                <div class="product-details">
+                    <h2>Detalles</h2>
+                    <ul>
+                        <li>Material: {{material}}</li>
+                        <li>Marca: {{marca}}</li>
+                        <li>Color: {{color}}</li>
+                        <li>Referencia: {{referencia}}</li>
+                    </ul>
+                </div>
+
+                <!-- Tabla de medidas -->
+                <div class="product-measurements">
+                    <h2>Medidas</h2>
+                    <table>
+                        <tr>
+                            <th>Medida</th>
+                            <th>Valor</th>
+                        </tr>
+                        {{#each medidas}}
+                        <tr>
+                            <td>{{this.nombre}}</td>
+                            <td>{{this.valor}} cm</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Se eliminó la sección "related-products" que estaba aquí -->
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2010.</p>
+                <div class="social-links">
+                    <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul class="footer-links">
+                    <li><a href="nosotros.html">FAQ</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><a href="devoluciones.html">Devoluciones</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="footer-links">
+                    <li>📍 Calle Principal, 123</li>
+                    <li>📞 +34 123 456 789</li>
+                    <li>✉️ info@fullhousevintage.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de galería -->
+    <div class="gallery-modal">
+        <span class="close-modal">&times;</span>
+        <img src="" alt="" class="modal-image">
+        <button class="modal-prev">&lt;</button>
+        <button class="modal-next">&gt;</button>
+    </div>
+</body>
+</html>
