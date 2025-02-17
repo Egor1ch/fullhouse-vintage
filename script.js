@@ -360,8 +360,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Inicializar el cliente de Supabase
 const supabaseUrl = 'https://eddrkybatnndihmxlrhi.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkZHJreWJhdG5uZGlobXhscmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MTI1MjMsImV4cCI6MjA1NTM4ODUyM30.7IXG-Ii6qkDfS5kZCopQ2P3Esq8tGVqpAMNNBwUbA6Y'
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkZHJreWJhdG5uZGlobXhscmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MTI1MjMsImV4cCI6MjA1NTM4ODUyM30.7IXG-Ii6qkDfS5kZCopQ2P3Esq8tGVqpAMNNBwUbA6Y';
+
+// Crear el cliente de Supabase usando la versión UMD
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Verificar que el cliente se ha creado correctamente
+console.log('Cliente Supabase inicializado:', supabase);
+
+// Función de prueba que puedes ejecutar en la consola
+window.testSupabase = async () => {
+    try {
+        const { data, error } = await supabase
+            .from('productos')
+            .select('count');
+        console.log('Resultado:', { data, error });
+    } catch (err) {
+        console.error('Error:', err);
+    }
+};
 
 // Elementos del DOM
 const productosContainer = document.getElementById('productos')
