@@ -356,6 +356,79 @@ function initializeProfile() {
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
     initializeProfile();
+});
+
+// Inicializar el cliente de Supabase
+const supabaseUrl = 'https://eddrkybatnndihmxlrhi.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkZHJreWJhdG5uZGlobXhscmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MTI1MjMsImV4cCI6MjA1NTM4ODUyM30.7IXG-Ii6qkDfS5kZCopQ2P3Esq8tGVqpAMNNBwUbA6Y'
+const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+
+// Elementos del DOM
+const productosContainer = document.getElementById('productos')
+const loader = document.getElementById('loader')
+
+// Función para cargar los productos
+async function cargarProductos() {
+    try {
+        // Mostrar loader
+        loader.style.display = 'block'
+        
+        // Obtener productos de Supabase
+        const { data: productos, error } = await supabase
+            .from('productos')
+            .select('*')
+
+        if (error) throw error
+
+        // Limpiar el contenedor
+        productosContainer.innerHTML = ''
+
+        // Mostrar los productos
+        productos.forEach(producto => {
+            const productoCard = `
+                <div class="producto-card">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <h3>${producto.nombre}</h3>
+                    <p class="precio">$${producto.precio}</p>
+                    <button onclick="verDetalles(${producto.id})">Ver Detalles</button>
+                </div>
+            `
+            productosContainer.innerHTML += productoCard
+        })
+    } catch (error) {
+        console.error('Error:', error.message)
+        productosContainer.innerHTML = `
+            <div class="error">
+                Error al cargar los productos. Por favor, intenta más tarde.
+            </div>
+        `
+    } finally {
+        // Ocultar loader
+        loader.style.display = 'none'
+    }
 }
 
-);
+// Función para ver detalles de un producto
+async function verDetalles(id) {
+    try {
+        const { data: producto, error } = await supabase
+            .from('productos')
+            .select('*')
+            .eq('id', id)
+            .single()
+
+        if (error) throw error
+
+        alert(`
+            Producto: ${producto.nombre}
+            Precio: $${producto.precio}
+            Descripción: ${producto.descripcion}
+        `)
+    } catch (error) {
+        console.error('Error:', error.message)
+        alert('Error al cargar los detalles del producto')
+    }
+}
+
+// Cargar productos cuando la página se carga
+document.addEventListener('DOMContentLoaded', cargarProductos)
