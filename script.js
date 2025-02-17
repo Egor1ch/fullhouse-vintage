@@ -361,31 +361,54 @@ document.addEventListener('DOMContentLoaded', function() {
 // Inicializar el cliente de Supabase
 const supabaseUrl = 'https://eddrkybatnndihmxlrhi.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkZHJreWJhdG5uZGlobXhscmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MTI1MjMsImV4cCI6MjA1NTM4ODUyM30.7IXG-Ii6qkDfS5kZCopQ2P3Esq8tGVqpAMNNBwUbA6Y'
-const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
 
 // Elementos del DOM
 const productosContainer = document.getElementById('productos')
 const loader = document.getElementById('loader')
 
-// Función para probar la conexión con Supabase
+// Función mejorada para probar la conexión
 async function testSupabaseConnection() {
+    console.log('Iniciando prueba de conexión con Supabase...');
+    
+    // Verificar que supabase está definido
+    if (!supabase) {
+        console.error('Error: Cliente Supabase no inicializado');
+        updateConnectionStatus('error', 'Cliente no inicializado');
+        return false;
+    }
+
     try {
+        console.log('Intentando consulta a Supabase...');
         const { data, error } = await supabase
             .from('productos')
-            .select('count')
-            .single();
+            .select('count');
 
-        if (error) throw error;
+        console.log('Respuesta recibida:', { data, error });
 
-        console.log('Conexión exitosa con Supabase');
-        document.getElementById('connectionStatus').textContent = '✅ Conectado a Supabase';
-        document.getElementById('connectionStatus').style.color = 'green';
+        if (error) {
+            throw error;
+        }
+
+        updateConnectionStatus('success', '✅ Conectado a Supabase');
         return true;
     } catch (error) {
-        console.error('Error de conexión con Supabase:', error.message);
-        document.getElementById('connectionStatus').textContent = '❌ Error de conexión con Supabase';
-        document.getElementById('connectionStatus').style.color = 'red';
+        console.error('Error detallado:', error);
+        updateConnectionStatus('error', '❌ Error: ' + error.message);
         return false;
+    }
+}
+
+// Función auxiliar para actualizar el estado de conexión
+function updateConnectionStatus(type, message) {
+    const statusElement = document.getElementById('connectionStatus');
+    if (statusElement) {
+        statusElement.textContent = message;
+        statusElement.style.color = type === 'success' ? 'green' : 'red';
+        statusElement.style.display = 'block';
+        console.log('Estado de conexión actualizado:', message);
+    } else {
+        console.error('Elemento connectionStatus no encontrado');
     }
 }
 
@@ -462,8 +485,10 @@ async function verDetalles(id) {
     }
 }
 
-// Ejecutar prueba de conexión cuando se carga la página
-document.addEventListener('DOMContentLoaded', function() {
-    testSupabaseConnection();
+// Modificar el evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', async function() {
+    console.log('DOM cargado, iniciando prueba de conexión...');
+    await testSupabaseConnection();
+    initializeProfile();
     cargarProductos();
 });
