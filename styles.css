@@ -81,6 +81,69 @@ header {
     padding: 0.5rem;
 }
 
+/* Estilos para el menú hamburguesa */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background-color: var(--color-primary);
+        padding-top: 60px;
+        transition: 0.3s ease-in-out;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        z-index: 99;
+    }
+
+    .main-nav.active {
+        left: 0;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .menu li {
+        width: 100%;
+        padding: 0;
+    }
+
+    .menu a {
+        display: block;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo-container {
+        margin: 0 auto;
+    }
+}
+
 .main-nav {
     position: absolute;
     top: 100%;
@@ -3348,4 +3411,291 @@ body.showCart .container {
 
 .back-button:hover {
     background: var(--color-secondary);
+}
+
+/* Estilos para la página de respuesta del formulario */
+.response-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.response-text {
+    flex: 1;
+}
+
+.response-logo {
+    flex: 0 0 auto;
+    padding: 1rem;
+}
+
+.response-logo img {
+    width: 150px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .response-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .response-logo {
+        margin-top: 2rem;
+    }
+
+    .response-logo img {
+        width: 120px;
+    }
+}
+
+/* Estilos para la página de respuesta del formulario */
+.contact-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Grid de dos columnas */
+    gap: 3rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.logo-response {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.logo-response img {
+    width: 600px; /* Cambiado de 300px a 600px */
+    height: auto;
+    filter: brightness(0);
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+    
+    .logo-response img {
+        width: 400px; /* Cambiado de 200px a 400px para mantener la proporción en móvil */
+    }
+}
+
+/* Estilos actualizados para móviles */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0.5rem;
+        height: auto;
+        min-height: 60px;
+        flex-wrap: wrap;
+    }
+
+    .logo-container {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .logo-container h3 {
+        font-size: 1rem;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .main-nav {
+        width: 100%;
+        padding: 0.5rem;
+        order: 3;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .menu li {
+        padding: 0.3rem;
+    }
+
+    .menu a {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        padding: 0.5rem;
+        display: block;
+    }
+
+    .header-icons {
+        position: static;
+        transform: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .search-container {
+        order: 4;
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0 0.5rem;
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .search-icon {
+        right: 10px;
+    }
+}
+
+/* Mejoras adicionales para pantallas muy pequeñas */
+@media screen and (max-width: 360px) {
+    .logo-container h3 {
+        font-size: 0.9rem;
+    }
+
+    .menu a {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    .header-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Ajustes actualizados para la barra de búsqueda en móviles */
+@media screen and (max-width: 768px) {
+    .search-container {
+        order: 4;
+        width: 100%;
+        max-width: 200px; /* Añadido para limitar el ancho */
+        margin: 0.5rem auto; /* Centrar horizontalmente */
+        padding: 0;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 180px; /* Reducido el ancho máximo */
+        font-size: 0.85rem; /* Texto más pequeño */
+        padding: 0.4rem 0.8rem; /* Padding más compacto */
+        height: 30px; /* Altura más pequeña */
+    }
+
+    .search-icon {
+        right: -25px; /* Ajustado para la nueva posición */
+    }
+
+    .search-icon img {
+        width: 18px; /* Icono más pequeño */
+        height: 18px;
+    }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media screen and (max-width: 360px) {
+    .search-container {
+        max-width: 160px; /* Aún más estrecho para pantallas muy pequeñas */
+    }
+
+    .search-input {
+        max-width: 140px;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .search-icon img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Actualizaciones para móviles */
+@media screen and (max-width: 768px) {
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem 0;
+        margin: 0;
+    }
+
+    .logo-container h3 {
+        display: none; /* Ocultar el nombre en móviles */
+    }
+
+    .logo img {
+        height: 50px; /* Logo más grande en móviles */
+        width: auto;
+        margin: 0 auto; /* Centrar el logo */
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .menu li {
+        padding: 0.3rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu a {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header-icons {
+        position: static;
+        justify-content: center;
+        margin: 0.5rem 0;
+        padding: 0;
+        width: auto;
+    }
+
+    .search-container {
+        margin: 0.5rem auto;
+    }
+}
+
+/* Ajustes adicionales para pantallas más pequeñas */
+@media screen and (max-width: 360px) {
+    .logo img {
+        height: 45px; /* Ligeramente más pequeño en pantallas muy pequeñas */
+    }
+
+    .menu {
+        padding: 0.3rem;
+    }
+
+    .menu a {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
 }

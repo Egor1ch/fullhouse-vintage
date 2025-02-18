@@ -792,3 +792,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// Funcionalidad del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const body = document.body;
+
+    menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            mainNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
+});

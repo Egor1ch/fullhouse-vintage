@@ -22,43 +22,142 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($mensaje) || preg_match('/[$@#]/', $mensaje)) {
         $errores[] = "El mensaje no es válido";
     }
-    
-    // HTML para mostrar respuesta
-    ?>
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Respuesta del Formulario</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="response-container">
-            <?php
-            if (empty($errores)) {
-                echo "<h2>¡Formulario enviado correctamente!</h2>";
-                echo "<p>Gracias por contactar con nosotros, {$nombre}.</p>";
-                echo "<p>Datos recibidos:</p>";
-                echo "<ul>";
-                echo "<li>Email: {$email}</li>";
-                echo "<li>Teléfono: {$telefono}</li>";
-                echo "<li>Tipo de consulta: {$tipoConsulta}</li>";
-                echo "<li>Preferencia de contacto: {$contacto}</li>";
-                echo "</ul>";
-            } else {
-                echo "<h2>Error en el formulario</h2>";
-                echo "<ul>";
-                foreach ($errores as $error) {
-                    echo "<li>{$error}</li>";
-                }
-                echo "</ul>";
-            }
-            ?>
-            <a href="contact.html" class="back-button">Volver al formulario</a>
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respuesta del Formulario - Fullhouse Vintage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="IMGs/logo-white.ico" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
+            </div>
+            <div class="logo-text">
+                <h3>FULL HOUSE VINTAGE</h3>
+            </div>
         </div>
-    </body>
-    </html>
-    <?php
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li><a href="contact.html">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <form class="search-container" id="searchForm">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
+                <button type="submit" class="search-icon">
+                    <img src="IMGs/search.png" alt="Buscar" class="header-icon">
+                </button>
+            </form>
+            <div class="icon-cart">
+                <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
+                <span>0</span>
+            </div>
+            <a href="perfil.html" class="icon-link">
+                <img src="IMGs/user.png" alt="Perfil" class="header-icon">
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="response-container">
+                <?php if (empty($errores)): ?>
+                    <h2>¡Formulario enviado correctamente!</h2>
+                    <p>Gracias por contactar con nosotros, <?php echo htmlspecialchars($nombre); ?>.</p>
+                    <div class="response-details">
+                        <h3>Datos recibidos:</h3>
+                        <ul>
+                            <li><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></li>
+                            <li><strong>Teléfono:</strong> <?php echo htmlspecialchars($telefono); ?></li>
+                            <li><strong>Tipo de consulta:</strong> <?php echo htmlspecialchars($tipoConsulta); ?></li>
+                            <li><strong>Preferencia de contacto:</strong> <?php echo htmlspecialchars($contacto); ?></li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <h2>Error en el formulario</h2>
+                    <div class="error-list">
+                        <ul>
+                            <?php foreach ($errores as $error): ?>
+                                <li><?php echo htmlspecialchars($error); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+                <div class="button-container">
+                    <a href="index.html" class="back-button">Volver al Inicio</a>
+                </div>
+            </div>
+            <div class="logo-response">
+                <img src="IMGs/logo-black.png" alt="Full House Vintage Logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2010.</p>
+                <div class="social-links">
+                    <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul class="footer-links">
+                    <li><a href="nosotros.html">FAQ</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><a href="devoluciones.html">Devoluciones</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="footer-links">
+                    <li>📍 Calle Principal, 123</li>
+                    <li>📞 +34 123 456 789</li>
+                    <li>✉️ info@fullhousevintage.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<?php
 } else {
     header("Location: contact.html");
     exit();
