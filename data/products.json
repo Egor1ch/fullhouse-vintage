@@ -6,6 +6,11 @@
       "description": "Chaqueta original de los años 70 en excelente estado",
       "price": 89.99,
       "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/2.jpeg",
+        "IMGs/3.jpeg",
+        "IMGs/4.jpeg"
+      ],
       "category": "ropa",
       "decade": "70s",
       "condition": "Excelente",
@@ -23,6 +28,11 @@
       "description": "Vestido estilo mod de los 60s en perfectas condiciones",
       "price": 75.99,
       "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
       "category": "ropa",
       "decade": "60s",
       "condition": "Bueno",
@@ -32,7 +42,54 @@
         "marca": "Boutique Vintage",
         "color": "Azul",
         "referencia": "VR60-002"
-      }
+      },
+      "featured" : true
+    },
+    {
+      "id": 4,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 5,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
     }
   ]
 }

@@ -68,17 +68,8 @@
                     <span class="product-size">Talla: {{talla}}</span>
                 </div>
 
-                <!-- Selector de cantidad y botón de compra -->
+                <!-- Botones de acción -->
                 <div class="purchase-options">
-                    <div class="quantity-selector">
-                        <label for="quantity">Cantidad:</label>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus">-</button>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{stock}}">
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                    </div>
-                    
                     <button class="add-to-cart-btn">Añadir al carrito</button>
                     <button class="add-to-wishlist-btn">♡ Añadir a favoritos</button>
                 </div>
@@ -98,23 +89,6 @@
                         <li>Color: {{color}}</li>
                         <li>Referencia: {{referencia}}</li>
                     </ul>
-                </div>
-
-                <!-- Tabla de medidas -->
-                <div class="product-measurements">
-                    <h2>Medidas</h2>
-                    <table>
-                        <tr>
-                            <th>Medida</th>
-                            <th>Valor</th>
-                        </tr>
-                        {{#each medidas}}
-                        <tr>
-                            <td>{{this.nombre}}</td>
-                            <td>{{this.valor}} cm</td>
-                        </tr>
-                        {{/each}}
-                    </table>
                 </div>
             </div>
         </div>
@@ -179,31 +153,43 @@
     <script>
         async function loadProductDetails() {
             try {
-                // Obtener el ID del producto de la URL
                 const urlParams = new URLSearchParams(window.location.search);
                 const productId = urlParams.get('id');
-
-                // Cargar los datos del producto
                 const response = await fetch('data/products.json');
                 const data = await response.json();
-                
-                // Encontrar el producto específico
                 const product = data.products.find(p => p.id == productId);
                 
                 if (!product) {
-                    window.location.href = 'catalogo.html'; // Redirigir si no se encuentra el producto
+                    window.location.href = 'catalogo.html';
                     return;
                 }
 
-                // Actualizar el título de la página
+                // Actualizar el título y detalles básicos
                 document.title = `${product.name} - Fullhouse Vintage`;
-
-                // Actualizar los elementos de la página con los datos del producto
                 document.querySelector('.product-title').textContent = product.name;
                 document.querySelector('.product-price').textContent = `${product.price.toFixed(2)}€`;
                 document.querySelector('.product-description p').textContent = product.description;
+                
+                // Actualizar imagen principal
                 document.querySelector('.main-image img').src = product.image;
                 document.querySelector('.main-image img').alt = product.name;
+
+                // Actualizar imágenes adicionales
+                const thumbnailGallery = document.querySelector('.thumbnail-gallery');
+                thumbnailGallery.innerHTML = ''; // Limpiar galería existente
+                
+                if (product.additionalImages && product.additionalImages.length > 0) {
+                    product.additionalImages.forEach((img, index) => {
+                        const thumbnail = document.createElement('img');
+                        thumbnail.src = img;
+                        thumbnail.alt = `${product.name} vista ${index + 1}`;
+                        thumbnail.className = 'thumbnail';
+                        thumbnail.addEventListener('click', () => {
+                            document.querySelector('.main-image img').src = img;
+                        });
+                        thumbnailGallery.appendChild(thumbnail);
+                    });
+                }
 
                 // Actualizar metadatos adicionales si existen
                 if (product.condition) document.querySelector('.product-condition').textContent = `Estado: ${product.condition}`;
