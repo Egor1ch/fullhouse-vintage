@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cerrar el carrito al hacer clic fuera
     document.addEventListener('click', (e) => {
+        // Si el clic fue en un botón de eliminar, no cerrar el carrito
+        if (e.target.classList.contains('remove-btn')) {
+            return;
+        }
+        
+        // Si el clic no fue en el carrito ni en su icono, cerrarlo
         if (!e.target.closest('.cartTab') && !e.target.closest('.icon-cart')) {
             document.body.classList.remove('showCart');
         }
@@ -540,9 +546,83 @@ function changeQuantityCart(product_id, type) {
     addCartToMemory();
 }
 
-// Función para eliminar del carrito
+// Modificar la función removeFromCart para mantener el carrito abierto
 function removeFromCart(product_id) {
     cart = cart.filter(item => item.product_id != product_id);
     addCartToHTML();
     addCartToMemory();
+    // Asegurar que el carrito permanezca abierto
+    document.body.classList.add('showCart');
+    
+    // Prevenir que eventos de click cierren el carrito
+    setTimeout(() => {
+        document.body.classList.add('showCart');
+    }, 0);
+}
+
+// Modificar el event listener para el botón de pago
+document.addEventListener('DOMContentLoaded', function() {
+    // Añadir evento al botón de pago
+    const checkOutBtn = document.querySelector('.checkOut');
+    if (checkOutBtn) {
+        checkOutBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                window.location.href = 'pago.html';
+            } else {
+                alert('El carrito está vacío');
+            }
+        });
+    }
+});
+
+async function loadProducts() {
+    try {
+        const response = await fetch('data/products.json');
+        const data = await response.json();
+        const productsGrid = document.getElementById('productsGrid');
+        
+        // Guardar los productos en la variable global
+        window.products = data.products;
+        
+        // Obtener página actual de la URL o usar 1 por defecto
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = parseInt(urlParams.get('page')) || 1;
+        
+        // Configurar paginación
+        const productsPerPage = 10; // 2 filas x 5 productos
+        const totalPages = Math.ceil(data.products.length / productsPerPage);
+        
+        // Calcular productos para la página actual
+        const start = (currentPage - 1) * productsPerPage;
+        const end = start + productsPerPage;
+        const productsToShow = data.products.slice(start, end);
+        
+        // Limpiar y mostrar productos
+        productsGrid.innerHTML = '';
+        productsToShow.forEach(product => {
+            // ... tu código existente para mostrar productos ...
+        });
+
+        // Actualizar paginación
+        updatePagination(currentPage, totalPages);
+    } catch (error) {
+        console.error('Error al cargar los productos:', error);
+    }
+}
+
+function updatePagination(currentPage, totalPages) {
+    const pagination = document.querySelector('.pagination');
+    pagination.innerHTML = '';
+    
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+        button.textContent = i;
+        button.addEventListener('click', () => {
+            const url = new URL(window.location);
+            url.searchParams.set('page', i);
+            window.location.href = url;
+        });
+        pagination.appendChild(button);
+    }
 }

@@ -34,14 +34,27 @@
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
                 </a>
             </div>
-            <a href="#" class="icon-link">
+            <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
-            </a>
+                <span>0</span>
+            </div>
             <a href="perfil.html" class="icon-link">
                 <img src="IMGs/user.png" alt="Perfil" class="header-icon">
             </a>
         </div>
     </header>
+
+    <!-- Actualizar este bloque en todos los archivos .html -->
+    <div class="cartTab">
+        <h1>Carrito de Compras</h1>
+        <div class="listCart">
+            <!-- Items del carrito irán aquí -->
+        </div>
+        <div class="btn">
+            <button class="close">Cerrar</button>
+            <button class="checkOut" onclick="window.location.href='pago.html'">Pagar</button>
+        </div>
+    </div>
 
     <main class="shipping-section">
         <div class="container">
@@ -113,6 +126,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

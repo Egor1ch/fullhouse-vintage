@@ -16,10 +16,10 @@
       "condition": "Excelente",
       "size": "M",
       "details": {
-        "material": "Cuero",
-        "marca": "Vintage Original",
-        "color": "Marrón",
-        "referencia": "CH70-001"
+        "Materiales": "Cuero",
+        "Marca": "Vintage Original",
+        "Color": "Marrón",
+        "Referencia": "CH70-001"
       }
     },
     {
@@ -38,9 +38,9 @@
       "condition": "Bueno",
       "size": "S",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
+        "Materiales": "Algodón",
+        "Marca": "Boutique Vintage",
+        "Color": "Azul",
         "referencia": "VR60-002"
       },
       "featured" : true
@@ -92,7 +92,145 @@
       "featured" : true
     },
     {
-      "id": 5,
+      "id": 6,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 7,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 8,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 9,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 10,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 11,
+      "name": "Vestido Retro 60s",
+      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
+      "price": 75.99,
+      "image": "IMGs/1.jpeg",
+      "additionalImages": [
+        "IMGs/1.jpeg",
+        "IMGs/1.jpeg",
+        "IMGs/3.jpeg"
+      ],
+      "category": "ropa",
+      "decade": "60s",
+      "condition": "Bueno",
+      "size": "S",
+      "details": {
+        "material": "Algodón",
+        "marca": "Boutique Vintage",
+        "color": "Azul",
+        "referencia": "VR60-002"
+      },
+      "featured" : true
+    },
+    {
+      "id": 12,
       "name": "Vestido Retro 60s",
       "description": "Vestido estilo mod de los 60s en perfectas condiciones",
       "price": 75.99,

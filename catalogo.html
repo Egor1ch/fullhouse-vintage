@@ -51,7 +51,7 @@
         </div>
         <div class="btn">
             <button class="close">Cerrar</button>
-            <button class="checkOut">Pagar</button>
+            <button class="checkOut" onclick="window.location.href='pago.html'">Pagar</button>
         </div>
     </div>
 
@@ -85,13 +85,9 @@
         <!-- Los productos se cargarán aquí dinámicamente -->
     </section>
 
-    <!-- Paginación -->
+    <!-- Reemplazar la sección de paginación -->
     <div class="pagination">
-        {{#each paginas}}
-        <button class="page-btn {{#if this.active}}active{{/if}}" data-page="{{this.numero}}">
-            {{this.numero}}
-        </button>
-        {{/each}}
+        <!-- Los botones se generarán dinámicamente con JavaScript -->
     </div>
 
     <footer class="footer">

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Fullhouse Vintage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
+            </div>
+            <div class="logo-text">
+                <h3>FULL HOUSE VINTAGE</h3>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li><a href="contact.html">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar...">
+                <a href="#" class="icon-link search-icon">
+                    <img src="IMGs/search.png" alt="Buscar" class="header-icon">
+                </a>
+            </div>
+            <div class="icon-cart" id="cartIcon">
+                <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
+                <span>0</span>
+            </div>
+            <a href="perfil.html" class="icon-link">
+                <img src="IMGs/user.png" alt="Perfil" class="header-icon">
+            </a>
+        </div>
+    </header>
+
+    <div class="cartTab">
+        <h1>Carrito de Compras</h1>
+        <div class="listCart">
+            <!-- Items del carrito irán aquí -->
+        </div>
+        <div class="btn">
+            <button class="close">Cerrar</button>
+            <button class="checkOut" onclick="window.location.href='pago.html'">Pagar</button>
+        </div>
+    </div>
+
+    <main class="under-development">
+        <h1>Página en desarrollo...</h1>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2010.</p>
+                <div class="social-links">
+                    <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul class="footer-links">
+                    <li><a href="nosotros.html">FAQ</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><a href="devoluciones.html">Devoluciones</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="footer-links">
+                    <li>📍 Calle Principal, 123</li>
+                    <li>📞 +34 123 456 789</li>
+                    <li>✉️ info@fullhousevintage.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

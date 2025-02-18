@@ -33,14 +33,26 @@
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
                 </a>
             </div>
-            <a href="#" class="icon-link">
+            <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
-            </a>
+                <span>0</span>
+            </div>
             <a href="perfil.html" class="icon-link">
                 <img src="IMGs/user.png" alt="Perfil" class="header-icon">
             </a>
         </div>
     </header>
+
+    <div class="cartTab">
+        <h1>Carrito de Compras</h1>
+        <div class="listCart">
+            <!-- Items del carrito irán aquí -->
+        </div>
+        <div class="btn">
+            <button class="close">Cerrar</button>
+            <button class="checkOut" onclick="window.location.href='pago.html'">Pagar</button>
+        </div>
+    </div>
 
     <main class="product-detail-page">
         <div class="product-detail-container">
@@ -143,6 +155,8 @@
     </footer>
 
     <script>
+        let productData = null; // Variable para almacenar los datos del producto
+
         async function loadProductDetails() {
             try {
                 const urlParams = new URLSearchParams(window.location.search);
@@ -156,6 +170,10 @@
                     return;
                 }
 
+                // Guardar los datos del producto para usarlos más tarde
+                productData = product;
+                window.products = data.products; // Necesario para la función addToCart
+
                 // Actualizar el título y detalles básicos
                 document.title = `${product.name} - Fullhouse Vintage`;
                 document.querySelector('.product-title').textContent = product.name;
@@ -166,9 +184,9 @@
                 document.querySelector('.main-image img').src = product.image;
                 document.querySelector('.main-image img').alt = product.name;
 
-                // Actualizar imágenes adicionales
+                // Actualizar imágenes adicionales si existen
                 const thumbnailGallery = document.querySelector('.thumbnail-gallery');
-                thumbnailGallery.innerHTML = ''; // Limpiar galería existente
+                thumbnailGallery.innerHTML = '';
                 
                 if (product.additionalImages && product.additionalImages.length > 0) {
                     product.additionalImages.forEach((img, index) => {
@@ -183,18 +201,22 @@
                     });
                 }
 
-                // Actualizar metadatos adicionales si existen
+                // Actualizar metadatos y detalles
                 if (product.condition) document.querySelector('.product-condition').textContent = `Estado: ${product.condition}`;
                 if (product.decade) document.querySelector('.product-era').textContent = `Década: ${product.decade}`;
                 if (product.size) document.querySelector('.product-size').textContent = `Talla: ${product.size}`;
 
-                // Actualizar detalles adicionales si existen
+                // Actualizar detalles adicionales
                 const detailsList = document.querySelector('.product-details ul');
                 if (detailsList && product.details) {
                     detailsList.innerHTML = Object.entries(product.details)
                         .map(([key, value]) => `<li>${key}: ${value}</li>`)
                         .join('');
                 }
+
+                // Configurar el botón de añadir al carrito
+                const addToCartBtn = document.querySelector('.add-to-cart-btn');
+                addToCartBtn.onclick = () => addToCart(product.id);
 
             } catch (error) {
                 console.error('Error al cargar los detalles del producto:', error);
@@ -204,5 +226,6 @@
         // Cargar los detalles del producto cuando la página se carga
         document.addEventListener('DOMContentLoaded', loadProductDetails);
     </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
