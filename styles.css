@@ -1234,33 +1234,44 @@ nav {
     display: flex;
     align-items: center;
     position: relative;
+    margin-right: 1rem;
 }
 
 .search-input {
-    width: 0;
-    padding: 8px;
+    width: 200px; /* Cambiar de 0 al ancho deseado */
+    opacity: 1; /* Cambiar de 0 a 1 para que sea siempre visible */
+    padding: 8px 35px 8px 12px;
     border: none;
     border-radius: 20px;
     background-color: var(--color-white);
     font-size: 14px;
-    transition: width 0.3s ease;
-    position: absolute;
-    right: 100%;
-    opacity: 0;
-    margin-right: 10px; /* Añadido: espacio entre el input y el icono */
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.search-input:focus {
+    width: 250px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    outline: none;
 }
 
 .search-container:hover .search-input,
 .search-input:focus {
-    width: 200px;
-    opacity: 1;
-    padding-right: 30px;
-    margin-right: 10px; /* Añadido: mantener el espacio incluso cuando está expandido */
+    width: 150px;
 }
 
 .search-icon {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    right: -30px; /* Cambiado de 10px a -30px para mover el icono hacia la derecha */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-icon img {
+    width: 24px;
+    height: 24px;
 }
 
 /* Ajuste para móviles */
@@ -1272,6 +1283,14 @@ nav {
     
     .search-input {
         font-size: 12px;
+    }
+
+    .search-container {
+        margin-right: 2.5rem; /* Aumentado el margen derecho en móviles */
+    }
+    
+    .search-icon {
+        right: -25px; /* Ajustado para móviles */
     }
 }
 
@@ -2394,7 +2413,7 @@ nav {
     justify-content: center;
 }
 
-.quantity-controls input {
+quantity-controls input {
     width: 50px;
     text-align: center;
     padding: 0.5rem;
@@ -3277,4 +3296,16 @@ body.showCart .container {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Estilos para resultados de búsqueda */
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    grid-column: 1 / -1;
+    background-color: var(--color-light);
+    border-radius: 8px;
+    margin: 1rem 0;
 }

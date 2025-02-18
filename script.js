@@ -575,54 +575,220 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Función para cargar los productos desde el JSON
 async function loadProducts() {
     try {
         const response = await fetch('data/products.json');
         const data = await response.json();
-        const productsGrid = document.getElementById('productsGrid');
-        
-        // Guardar los productos en la variable global
-        window.products = data.products;
-        
-        // Obtener página actual de la URL o usar 1 por defecto
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentPage = parseInt(urlParams.get('page')) || 1;
-        
-        // Configurar paginación
-        const productsPerPage = 10; // 2 filas x 5 productos
-        const totalPages = Math.ceil(data.products.length / productsPerPage);
-        
-        // Calcular productos para la página actual
-        const start = (currentPage - 1) * productsPerPage;
-        const end = start + productsPerPage;
-        const productsToShow = data.products.slice(start, end);
-        
-        // Limpiar y mostrar productos
-        productsGrid.innerHTML = '';
-        productsToShow.forEach(product => {
-            // ... tu código existente para mostrar productos ...
-        });
-
-        // Actualizar paginación
-        updatePagination(currentPage, totalPages);
+        window.products = data.products; // Guardar productos globalmente
+        displayProducts(data.products); // Mostrar todos los productos
     } catch (error) {
         console.error('Error al cargar los productos:', error);
     }
 }
 
-function updatePagination(currentPage, totalPages) {
-    const pagination = document.querySelector('.pagination');
-    pagination.innerHTML = '';
+// Función para mostrar productos en la grid
+function displayProducts(productsToShow) {
+    const productsGrid = document.getElementById('productsGrid');
+    if (!productsGrid) return;
     
-    for (let i = 1; i <= totalPages; i++) {
-        const button = document.createElement('button');
-        button.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-        button.textContent = i;
-        button.addEventListener('click', () => {
-            const url = new URL(window.location);
-            url.searchParams.set('page', i);
-            window.location.href = url;
+    productsGrid.innerHTML = '';
+    
+    if (productsToShow.length === 0) {
+        productsGrid.innerHTML = '<div class="no-results">No se encontraron productos</div>';
+        return;
+    }
+
+    productsToShow.forEach(product => {
+        const productHTML = `
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>${product.name}</h3>
+                        <p class="product-description">${product.description || ''}</p>
+                    </div>
+                    <div class="product-bottom">
+                        <p class="price">${product.price.toFixed(2)}€</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                            Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+        productsGrid.innerHTML += productHTML;
+    });
+}
+
+// Función de búsqueda mejorada
+function searchProducts(query) {
+    if (!window.products) return;
+    
+    query = query.toLowerCase().trim();
+    
+    if (!query) {
+        displayProducts(window.products);
+        return;
+    }
+
+    const filteredProducts = window.products.filter(product => 
+        product.name.toLowerCase().includes(query) ||
+        (product.description && product.description.toLowerCase().includes(query)) ||
+        (product.category && product.category.toLowerCase().includes(query)) ||
+        (product.decade && product.decade.toLowerCase().includes(query))
+    );
+
+    displayProducts(filteredProducts);
+}
+
+// Event listeners para la búsqueda
+document.addEventListener('DOMContentLoaded', function() {
+    // Cargar productos al iniciar
+    loadProducts();
+    
+    // Configurar búsqueda
+    const searchInput = document.querySelector('.search-input');
+    let searchTimeout;
+
+    if (searchInput) {
+        // Evento input para búsqueda en tiempo real
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchProducts(this.value);
+            }, 300);
         });
-        pagination.appendChild(button);
+
+        // Prevenir envío de formulario
+        const form = searchInput.closest('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                searchProducts(searchInput.value);
+            });
+        }
+    }
+});
+
+// Función de búsqueda
+function searchProducts(query) {
+    if (!window.products) return;
+    
+    query = query.toLowerCase().trim();
+    const productsGrid = document.getElementById('productsGrid');
+    
+    if (!query) {
+        loadProducts(); // Si la búsqueda está vacía, mostrar todos los productos
+        return;
+    }
+
+    const filteredProducts = window.products.filter(product => {
+        return (
+            product.name.toLowerCase().includes(query) ||
+            product.description.toLowerCase().includes(query) ||
+            product.category.toLowerCase().includes(query) ||
+            product.decade.toLowerCase().includes(query)
+        );
+    });
+
+    productsGrid.innerHTML = '';
+    
+    if (filteredProducts.length === 0) {
+        productsGrid.innerHTML = '<div class="no-results">No se encontraron productos que coincidan con tu búsqueda</div>';
+        return;
+    }
+
+    filteredProducts.forEach(product => {
+        const productHTML = `
+            <article class="product-card">
+                <div class="product-image">
+                    <a href="producto.html?id=${product.id}" class="product-link">
+                        <img src="${product.image}" alt="${product.name}">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3><a href="producto.html?id=${product.id}">${product.name}</a></h3>
+                        <p class="product-description">${product.description}</p>
+                    </div>
+                    <div class="product-bottom">
+                        <p class="price">${product.price.toFixed(2)}€</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </article>
+        `;
+        productsGrid.innerHTML += productHTML;
+    });
+}
+
+// Event listener para la barra de búsqueda
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-input');
+    let searchTimeout;
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchProducts(this.value);
+            }, 300); // Esperar 300ms después de que el usuario deje de escribir
+        });
+
+        // Prevenir que el formulario se envíe al presionar Enter
+        searchInput.closest('form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            searchProducts(searchInput.value);
+        });
+    }
+});
+
+// Función para manejar la búsqueda desde cualquier página
+function handleSearch(event) {
+    event.preventDefault();
+    const searchInput = document.querySelector('.search-input');
+    const query = searchInput.value.trim();
+    
+    if (!query) return;
+    
+    // Si estamos en la página de catálogo, realizar la búsqueda directamente
+    if (window.location.pathname.includes('catalogo.html')) {
+        performSearch();
+    } else {
+        // Si estamos en otra página, redirigir al catálogo con el parámetro de búsqueda
+        window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
     }
 }
+
+// Event listeners para la búsqueda en todas las páginas
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.querySelector('.search-container');
+    const searchInput = document.querySelector('.search-input');
+    
+    if (searchForm) {
+        searchForm.addEventListener('submit', handleSearch);
+    }
+    
+    // Si estamos en la página de catálogo, comprobar si hay una búsqueda en la URL
+    if (window.location.pathname.includes('catalogo.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        
+        if (searchQuery) {
+            // Establecer el valor en el input
+            if (searchInput) {
+                searchInput.value = searchQuery;
+            }
+            // Cargar productos y realizar la búsqueda
+            loadProducts().then(() => {
+                performSearch();
+            });
+        } else {
+            // Si no hay búsqueda, cargar todos los productos
+            loadProducts();
+        }
+    }
+});

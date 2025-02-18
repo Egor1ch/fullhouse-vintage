@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fullhouse Vintage</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="IMGs/logo-white.ico" />
     <script src="js/productoGenerator.js"></script>
     <script src="js/productRouter.js"></script>
 
@@ -37,12 +38,12 @@
 
         <!-- Reemplazar la sección del header-icons con esto en cada página -->
         <div class="header-icons">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <a href="#" class="icon-link search-icon">
+            <form class="search-container" id="searchForm" onsubmit="handleSearch(event)">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
+                <button type="submit" class="search-icon">
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
-                </a>
-            </div>
+                </button>
+            </form>
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
                 <span>0</span>
@@ -240,6 +241,35 @@
 
         // Cargar los productos destacados cuando se carga la página
         document.addEventListener('DOMContentLoaded', loadFeaturedProducts);
+    </script>
+    <script>
+        // Función para manejar la búsqueda y redirigir al catálogo
+        function handleSearch(event) {
+            event.preventDefault();
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim();
+            
+            if (query) {
+                // Redirigir al catálogo con el parámetro de búsqueda
+                window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
+            }
+        }
+
+        // Event listeners para la búsqueda
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.getElementById('searchForm');
+            
+            if (searchForm) {
+                searchForm.addEventListener('submit', handleSearch);
+                
+                // También manejar el evento de presionar Enter
+                document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        handleSearch(e);
+                    }
+                });
+            }
+        });
     </script>
     <!-- Añadir antes del cierre del </body> en cada página -->
     <script src="script.js" defer></script>

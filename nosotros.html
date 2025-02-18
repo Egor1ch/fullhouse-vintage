@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros - Fullhouse Vintage</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="IMGs/logo-white.ico" />
 </head>
 <body>
     <header>
@@ -27,12 +28,12 @@
         </nav>
 
         <div class="header-icons">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <a href="#" class="icon-link search-icon">
+            <form class="search-container" id="searchForm" onsubmit="handleSearch(event)">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
+                <button type="submit" class="search-icon">
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
-                </a>
-            </div>
+                </button>
+            </form>
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
                 <span>0</span>
@@ -142,5 +143,16 @@
         </div>
     </footer>
     <script src="script.js" defer></script>
+    <script>
+        function handleSearch(event) {
+            event.preventDefault();
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim();
+            
+            if (query) {
+                window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
+            }
+        }
+    </script>
 </body>
 </html>

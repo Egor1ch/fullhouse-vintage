@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Fullhouse Vintage</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="IMGs/logo-white.ico" />
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -28,12 +29,15 @@
         </nav>
 
         <div class="header-icons">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar...">
-                <a href="#" class="icon-link search-icon">
+            <form class="search-container" id="searchForm">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
+                <button type="submit" class="search-icon">
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
-                </a>
-            </div>
+                </button>
+            </form>
+            <a href="favoritos.html" class="icon-link">
+                <img src="IMGs/favourite.png" alt="Favoritos" class="header-icon">
+            </a>
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
                 <span>0</span>
@@ -138,165 +142,121 @@
     </footer>
 
     <script>
-        // Código para manejar los filtros
-        document.querySelectorAll('.filter-select').forEach(select => {
-            select.addEventListener('change', function() {
-                const filters = {
-                    categoria: document.getElementById('categoria').value,
-                    decada: document.getElementById('decada').value,
-                    precio: document.getElementById('precio').value
-                };
-                
-                updateURL(filters);
-                // Aquí irá la lógica para actualizar los productos según los filtros
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Comprobar si hay un parámetro de búsqueda en la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+            
+            // Cargar los productos
+            await loadProducts();
+            
+            // Si hay una búsqueda, realizar la búsqueda y actualizar el input
+            if (searchQuery) {
+                const searchInput = document.getElementById('searchInput');
+                searchInput.value = searchQuery;
+                performSearch(searchQuery);
+            }
+
+            // Configurar el formulario de búsqueda
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('searchInput');
+            
+            // Manejar envío del formulario
+            searchForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                performSearch(searchInput.value);
+            });
+            
+            // Búsqueda en tiempo real
+            searchInput.addEventListener('input', () => {
+                clearTimeout(window.searchTimeout);
+                window.searchTimeout = setTimeout(() => {
+                    performSearch(searchInput.value);
+                }, 300);
             });
         });
-
-        // Función para actualizar la URL con los filtros
-        function updateURL(filters) {
-            const url = new URL(window.location);
-            Object.entries(filters).forEach(([key, value]) => {
-                if (value) {
-                    url.searchParams.set(key, value);
-                } else {
-                    url.searchParams.delete(key);
-                }
-            });
-            window.history.pushState({}, '', url);
-        }
-
-        // Código para la paginación
-        document.querySelectorAll('.page-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const page = this.dataset.page;
-                const url = new URL(window.location);
-                url.searchParams.set('page', page);
-                window.location.href = url;
-            });
-        });
-
-        // Funcionalidad para añadir al carrito
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.closest('.product-card');
-                const productName = product.querySelector('h3').textContent;
-                alert(`${productName} añadido al carrito`);
-                // Aquí iría la lógica real del carrito
-            });
-        });
-
-        // Funcionalidad para vista rápida
-        document.querySelectorAll('.quick-view-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.closest('.product-card');
-                const productName = product.querySelector('h3').textContent;
-                alert(`Vista rápida de ${productName}`);
-                // Aquí iría la lógica real de vista rápida
-            });
-        });
-
-        // Reemplazar el código de loadProducts con esta versión actualizada
+        
         async function loadProducts() {
             try {
                 const response = await fetch('data/products.json');
                 const data = await response.json();
-                const productsGrid = document.getElementById('productsGrid');
-                
-                // Guardar los productos en la variable global
                 window.products = data.products;
-                
-                productsGrid.innerHTML = '';
-                
-                data.products.forEach(product => {
-                    const productHTML = `
-                        <article class="product-card">
-                            <div class="product-image">
-                                <a href="producto.html?id=${product.id}" class="product-link">
-                                    <img src="${product.image}" alt="${product.name}">
-                                </a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3><a href="producto.html?id=${product.id}">${product.name}</a></h3>
-                                    <p class="product-description">${product.description}</p>
-                                </div>
-                                <div class="product-bottom">
-                                    <p class="price">${product.price.toFixed(2)}€</p>
-                                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Añadir al Carrito</button>
-                                </div>
-                            </div>
-                        </article>
-                    `;
-                    productsGrid.innerHTML += productHTML;
-                });
+                displayProducts(data.products);
             } catch (error) {
                 console.error('Error al cargar los productos:', error);
             }
         }
-
-        // Función para filtrar productos
-        function filterProducts() {
-            const categoria = document.getElementById('categoria').value;
-            const decada = document.getElementById('decada').value;
-            const precio = document.getElementById('precio').value;
-
-            fetch('data/products.json')
-                .then(response => response.json())
-                .then(data => {
-                    let filteredProducts = data.products;
-
-                    // Aplicar filtros
-                    if (categoria) {
-                        filteredProducts = filteredProducts.filter(p => p.category === categoria);
-                    }
-                    if (decada) {
-                        filteredProducts = filteredProducts.filter(p => p.decade === decada);
-                    }
-                    if (precio) {
-                        const [min, max] = precio.split('-');
-                        filteredProducts = filteredProducts.filter(p => {
-                            if (max === undefined) {
-                                return p.price >= parseInt(min);
-                            }
-                            return p.price >= parseInt(min) && p.price <= parseInt(max);
-                        });
-                    }
-
-                    // Actualizar la visualización
-                    const productsGrid = document.getElementById('productsGrid');
-                    productsGrid.innerHTML = ''; // Limpiar grid actual
-
-                    filteredProducts.forEach(product => {
-                        const productHTML = `
-                            <article class="product-card">
-                                <div class="product-image">
-                                    <img src="${product.image}" alt="${product.name}">
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-details">
-                                        <h3>${product.name}</h3>
-                                        <p class="product-description">${product.description}</p>
-                                    </div>
-                                    <div class="product-bottom">
-                                        <p class="price">${product.price.toFixed(2)}€</p>
-                                        <button class="add-to-cart-btn" data-product-id="${product.id}">Añadir al Carrito</button>
-                                    </div>
-                                </div>
-                            </article>
-                        `;
-                        productsGrid.innerHTML += productHTML;
-                    });
-                })
-                .catch(error => console.error('Error:', error));
+        
+        function performSearch(query = null) {
+            // Si no se proporciona query, tomarla del input
+            if (query === null) {
+                query = document.getElementById('searchInput').value;
+            }
+            
+            query = query.toLowerCase().trim();
+            if (!window.products) {
+                console.error('Los productos no están cargados todavía');
+                return;
+            }
+            
+            const filteredProducts = !query ? window.products : window.products.filter(product => 
+                product.name.toLowerCase().includes(query) ||
+                (product.description && product.description.toLowerCase().includes(query)) ||
+                (product.category && product.category.toLowerCase().includes(query)) ||
+                (product.decade && product.decade.toLowerCase().includes(query))
+            );
+            
+            displayProducts(filteredProducts);
+            
+            // Actualizar la URL sin recargar la página
+            const newUrl = new URL(window.location);
+            if (query) {
+                newUrl.searchParams.set('search', query);
+            } else {
+                newUrl.searchParams.delete('search');
+            }
+            window.history.pushState({}, '', newUrl);
         }
-
-        // Event listeners para los filtros
-        document.querySelectorAll('.filter-select').forEach(select => {
-            select.addEventListener('change', filterProducts);
-        });
-
-        // Cargar productos cuando la página se carga
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        
+        function displayProducts(products) {
+            const productsGrid = document.getElementById('productsGrid');
+            if (!productsGrid) return;
+            
+            productsGrid.innerHTML = '';
+            
+            if (products.length === 0) {
+                productsGrid.innerHTML = `
+                    <div class="no-results">
+                        No se encontraron productos que coincidan con tu búsqueda
+                    </div>`;
+                return;
+            }
+        
+            products.forEach(product => {
+                const productHTML = `
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="producto.html?id=${product.id}">
+                                <img src="${product.image}" alt="${product.name}">
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-details">
+                                <h3><a href="producto.html?id=${product.id}">${product.name}</a></h3>
+                                <p class="product-description">${product.description || ''}</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="price">${product.price.toFixed(2)}€</p>
+                                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                                    Añadir al Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+                productsGrid.innerHTML += productHTML;
+            });
+        }
     </script>
 </body>
 </html>
