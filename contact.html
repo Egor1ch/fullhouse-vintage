@@ -6,6 +6,7 @@
     <title>Contacto - Fullhouse Vintage</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="IMGs/logo-white.ico" />
+    <script src="form_validation.js" defer></script>
 </head>
 <body>
     <header>
@@ -59,7 +60,7 @@
         <h1>Contáctanos</h1>
         <div class="contact-container">
             <!-- Formulario de contacto a la izquierda -->
-            <form class="contact-form" onsubmit="return validateForm()">
+            <form class="contact-form" action="procesar_contacto.php" method="POST" onsubmit="return validarFormulario(event)">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
@@ -72,10 +73,7 @@
 
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" 
-                        pattern="[0-9]{9}" 
-                        title="Introduce un número de teléfono válido (9 dígitos)" 
-                        required>
+                    <input type="tel" id="telefono" name="telefono" required>
                 </div>
 
                 <div class="form-group">
@@ -85,7 +83,7 @@
                         <option value="producto">Información de producto</option>
                         <option value="pedido">Estado de pedido</option>
                         <option value="devolucion">Devolución</option>
-                        <option value="otro">Otro</option>
+                        <option value="compra">Compra</option>
                     </select>
                 </div>
 

@@ -3309,3 +3309,43 @@ body.showCart .container {
     border-radius: 8px;
     margin: 1rem 0;
 }
+
+/* Estilos para la página de respuesta */
+.response-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.response-container h2 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.response-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.response-container li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.back-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.back-button:hover {
+    background: var(--color-secondary);
+}
