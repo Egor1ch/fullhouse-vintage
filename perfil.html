@@ -43,257 +43,49 @@
         </div>
     </header>
 
-    <main class="profile-section">
-        <h1>Mi Cuenta</h1>
-        
-        <!-- Panel de navegación del perfil -->
-        <div class="profile-nav">
-            <button class="nav-btn active" data-tab="datos">Mis Datos</button>
-            <button class="nav-btn" data-tab="pedidos">Mis Pedidos</button>
-            <button class="nav-btn" data-tab="direcciones">Direcciones</button>
-            <button class="nav-btn" data-tab="favoritos">Favoritos</button>
-            <button class="nav-btn" data-tab="carrito">Mi Carrito</button>
-        </div>
-
-        <!-- Contenido de las pestañas -->
-        <div class="profile-content">
-            <!-- Mis Datos -->
-            <section id="datos" class="tab-content active">
-                <h2>Datos Personales</h2>
-                <form class="profile-form">
-                    <div class="form-group">
-                        <label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono">
-                    </div>
-                    <div class="form-buttons">
-                        <button type="submit" class="save-btn">Guardar cambios</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- Mis Pedidos -->
-            <section id="pedidos" class="tab-content">
-                <h2>Historial de Pedidos</h2>
-                <div class="orders-list">
-                    <div class="order-card">
-                        <div class="order-header">
-                            <span>Pedido #12345</span>
-                            <span>23/02/2024</span>
-                            <span class="order-status">Entregado</span>
-                        </div>
-                        <div class="order-content">
-                            <img src="IMGs/1.jpeg" alt="Producto">
-                            <div class="order-details">
-                                <h3>Chaqueta Vintage</h3>
-                                <div class="order-info">
-                                    <p><strong>Cantidad:</strong> 1</p>
-                                    <p><strong>Precio:</strong> 89,99€</p>
-                                    <p><strong>Envío a:</strong> Calle Principal, 123</p>
-                                    <p><strong>Método de pago:</strong> Tarjeta terminada en 4242</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Direcciones -->
-            <section id="direcciones" class="tab-content">
-                <h2>Mis Direcciones</h2>
-                <div class="addresses-list">
-                    <div class="address-card">
-                        <h3>Dirección Principal</h3>
-                        <p>Calle Principal, 123</p>
-                        <p>28001 Madrid</p>
-                        <p>España</p>
-                        <div class="address-actions">
-                            <button class="action-btn edit-btn">Editar</button>
-                            <button class="action-btn delete-btn">Eliminar</button>
-                        </div>
-                    </div>
-                    <button class="add-address-btn">+ Añadir nueva dirección</button>
-                </div>
-                <!-- Modal para nueva dirección -->
-                <div id="addressModal" class="modal">
-                    <div class="modal-content">
-                        <h3>Nueva Dirección</h3>
-                        <form id="addressForm">
-                            <div class="form-group">
-                                <label for="street">Calle</label>
-                                <input type="text" id="street" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="city">Ciudad</label>
-                                <input type="text" id="city" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="postalCode">Código Postal</label>
-                                <input type="text" id="postalCode" required>
-                            </div>
-                            <div class="modal-buttons">
-                                <button type="submit" class="action-btn save-btn">Guardar</button>
-                                <button type="button" class="action-btn cancel-btn">Cancelar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Favoritos -->
-            <section id="favoritos" class="tab-content">
-                <h2>Mis Favoritos</h2>
-                <div class="favorites-grid">
-                    <!-- Ejemplo de producto favorito -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="IMGs/1.jpeg" alt="Producto favorito">
-                            <div class="product-actions">
-                                <button class="action-btn remove-favorite">Eliminar de favoritos</button>
-                                <button class="action-btn add-to-cart">Añadir al carrito</button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3>Chaqueta Vintage</h3>
-                            <p class="price">89,99 €</p>
-                        </div>
-                    </div>
-                    <!-- Más productos favoritos aquí -->
-                </div>
-            </section>
-
-            <!-- Mi Carrito -->
-            <section id="carrito" class="tab-content">
-                <h2>Mi Carrito</h2>
-                <div class="cart-items">
-                    <div class="cart-item">
-                        <img src="IMGs/1.jpeg" alt="Producto en carrito">
-                        <div class="cart-item-details">
-                            <h3>Chaqueta Vintage</h3>
-                            <p class="price">89,99 €</p>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn decrease">-</button>
-                                <input type="number" value="1" min="1" max="10" readonly>
-                                <button class="quantity-btn increase">+</button>
-                            </div>
-                        </div>
-                        <button class="remove-item" title="Eliminar producto">&times;</button>
-                    </div>
-                    <div class="cart-summary">
-                        <p>Subtotal: <span>89,99 €</span></p>
-                        <p>Envío: <span>Gratis</span></p>
-                        <p class="total">Total: <span>89,99 €</span></p>
-                        <button class="checkout-btn">Proceder al pago</button>
-                    </div>
-                </div>
-            </section>
-        </div>
+    <main class="under-development">
+        <h1>Página en desarrollo...</h1>
     </main>
 
     <footer class="footer">
-        <div class="social-links">
-            <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
-            <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
-            <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <ul class="footer-links">
+                    <li><a href="nosotros.html">Nuestra Historia</a></li>
+                    <li><a href="nosotros.html#valores">Valores</a></li>
+                    <li><a href="nosotros.html#equipo">Equipo</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Atención al Cliente</h4>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                    <li><a href="#">Envíos</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Fullhouse Vintage. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script>
-        // JavaScript para la funcionalidad de las pestañas
-        document.querySelectorAll('.nav-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remover clase active de todos los botones y contenidos
-                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-                
-                // Añadir clase active al botón clickeado
-                button.classList.add('active');
-                
-                // Mostrar el contenido correspondiente
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
-        // Funcionalidad para el carrito
-        document.querySelectorAll('.quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const input = this.parentElement.querySelector('input');
-                const currentValue = parseInt(input.value);
-                
-                if (this.classList.contains('increase') && currentValue < 10) {
-                    input.value = currentValue + 1;
-                } else if (this.classList.contains('decrease') && currentValue > 1) {
-                    input.value = currentValue - 1;
-                }
-                
-                updateCartTotal();
-            });
-        });
-
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function() {
-                if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-                    this.closest('.cart-item').remove();
-                    updateCartTotal();
-                }
-            });
-        });
-
-        // Funcionalidad para favoritos
-        document.querySelectorAll('.remove-favorite').forEach(button => {
-            button.addEventListener('click', function() {
-                if (confirm('¿Eliminar de favoritos?')) {
-                    this.closest('.product-card').remove();
-                }
-            });
-        });
-
-        // Funcionalidad para direcciones
-        const addressModal = document.getElementById('addressModal');
-        
-        document.querySelector('.add-address-btn').addEventListener('click', () => {
-            addressModal.style.display = 'block';
-        });
-
-        document.querySelector('.cancel-btn').addEventListener('click', () => {
-            addressModal.style.display = 'none';
-        });
-
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                if (confirm('¿Estás seguro de que quieres eliminar esta dirección?')) {
-                    this.closest('.address-card').remove();
-                }
-            });
-        });
-
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const addressCard = this.closest('.address-card');
-                // Aquí implementarías la lógica de edición
-                alert('Función de edición en desarrollo');
-            });
-        });
-
-        // Cerrar modal al hacer clic fuera
-        window.addEventListener('click', (e) => {
-            if (e.target === addressModal) {
-                addressModal.style.display = 'none';
-            }
-        });
-
-        function updateCartTotal() {
-            // Aquí implementarías la lógica para actualizar el total
-            console.log('Actualizando total del carrito...');
-        }
-    </script>
 </body>
 </html>

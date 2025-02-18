@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Fullhouse Vintage</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -33,14 +34,26 @@
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
                 </a>
             </div>
-            <a href="#" class="icon-link">
+            <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
-            </a>
+                <span>0</span>
+            </div>
             <a href="perfil.html" class="icon-link">
                 <img src="IMGs/user.png" alt="Perfil" class="header-icon">
             </a>
         </div>
     </header>
+
+    <div class="cartTab">
+        <h1>Carrito de Compras</h1>
+        <div class="listCart">
+            <!-- Items del carrito irán aquí -->
+        </div>
+        <div class="btn">
+            <button class="close">Cerrar</button>
+            <button class="checkOut">Pagar</button>
+        </div>
+    </div>
 
     <!-- Filtros y Búsqueda -->
     <section class="catalog-filters">
@@ -186,12 +199,15 @@
             });
         });
 
-        // Función para cargar los productos
+        // Reemplazar el código de loadProducts con esta versión actualizada
         async function loadProducts() {
             try {
                 const response = await fetch('data/products.json');
                 const data = await response.json();
                 const productsGrid = document.getElementById('productsGrid');
+                
+                // Guardar los productos en la variable global
+                window.products = data.products;
                 
                 productsGrid.innerHTML = '';
                 
@@ -210,22 +226,12 @@
                                 </div>
                                 <div class="product-bottom">
                                     <p class="price">${product.price.toFixed(2)}€</p>
-                                    <button class="add-to-cart-btn" data-product-id="${product.id}">Añadir al Carrito</button>
+                                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Añadir al Carrito</button>
                                 </div>
                             </div>
                         </article>
                     `;
                     productsGrid.innerHTML += productHTML;
-                });
-
-                // Añadir event listeners a los botones después de cargar los productos
-                document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-product-id');
-                        const product = data.products.find(p => p.id == productId);
-                        alert(`${product.name} añadido al carrito`);
-                        // Aquí irá la lógica real del carrito
-                    });
                 });
             } catch (error) {
                 console.error('Error al cargar los productos:', error);
