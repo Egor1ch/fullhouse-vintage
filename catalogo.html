@@ -10,16 +10,33 @@
 </head>
 <body>
     <header>
+        <div class="mobile-nav">
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Menú móvil -->
+            <div class="nav-links" id="mobileMenu">
+                <button class="close-menu" id="closeMenu"></button>
+                <a href="index.html">INICIO</a>
+                <a href="catalogo.html">CATÁLOGO</a>
+                <a href="nosotros.html">NOSOTROS</a>
+                <a href="contact.html">CONTACTO</a>
+            </div>
+        </div>
+
         <div class="logo-container">
             <div class="logo">
                 <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
             </div>
             <div class="logo-text">
-                <h3>FULL HOUSE VINTAGE</h3>
+                <h3><span>FULL HOUSE VINTAGE</span></h3>
             </div>
         </div>
 
-        <nav>
+        <nav class="desktop-nav">
             <ul class="menu">
                 <li><a href="index.html">INICIO</a></li>
                 <li><a href="catalogo.html">CATÁLOGO</a></li>
@@ -29,7 +46,7 @@
         </nav>
 
         <div class="header-icons">
-            <form class="search-container" id="searchForm">
+            <form class="search-container" id="searchForm" onsubmit="handleSearch(event)">
                 <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
                 <button type="submit" class="search-icon">
                     <img src="IMGs/search.png" alt="Buscar" class="header-icon">
@@ -232,23 +249,23 @@
             products.forEach(product => {
                 const productHTML = `
                     <article class="product-card">
-                        <div class="product-image">
-                            <a href="producto.html?id=${product.id}">
+                        <a href="producto.html?id=${product.id}" class="product-link">
+                            <div class="product-image">
                                 <img src="${product.image}" alt="${product.name}">
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3><a href="producto.html?id=${product.id}">${product.name}</a></h3>
-                                <p class="product-description">${product.description || ''}</p>
                             </div>
-                            <div class="product-bottom">
-                                <p class="price">${product.price.toFixed(2)}€</p>
-                                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
-                                    Añadir al Carrito
-                                </button>
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3>${product.name}</h3>
+                                    <p class="product-description">${product.description || ''}</p>
+                                </div>
+                                <div class="product-bottom">
+                                    <p class="price">${product.price.toFixed(2)}€</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                            Añadir al Carrito
+                        </button>
                     </article>
                 `;
                 productsGrid.innerHTML += productHTML;

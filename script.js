@@ -37,17 +37,22 @@ document.addEventListener('DOMContentLoaded', function() {
 // Añadir al inicio del archivo
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const closeMenu = document.getElementById('closeMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     const body = document.body;
 
     function toggleMenu() {
         hamburgerBtn.classList.toggle('active');
         mobileMenu.classList.toggle('active');
+        closeMenu.classList.toggle('active');
         body.classList.toggle('menu-open');
     }
 
-    // Toggle menú al hacer click en el botón
+    // Toggle menú al hacer click en el botón hamburguesa
     hamburgerBtn.addEventListener('click', toggleMenu);
+
+    // Toggle menú al hacer click en el botón cerrar
+    closeMenu.addEventListener('click', toggleMenu);
 
     // Cerrar menú al hacer click en un enlace
     const menuLinks = mobileMenu.querySelectorAll('a');
@@ -59,9 +64,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cerrar menú al hacer click fuera
     document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && 
+        if (mobileMenu.classList.contains('active') &&
+            !mobileMenu.contains(e.target) && 
             !hamburgerBtn.contains(e.target) && 
-            mobileMenu.classList.contains('active')) {
+            !closeMenu.contains(e.target)) {
             toggleMenu();
         }
     });

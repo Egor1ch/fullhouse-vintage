@@ -10,16 +10,33 @@
 </head>
 <body>
     <header>
+        <div class="mobile-nav">
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Menú móvil -->
+            <div class="nav-links" id="mobileMenu">
+                <button class="close-menu" id="closeMenu"></button>
+                <a href="index.html">INICIO</a>
+                <a href="catalogo.html">CATÁLOGO</a>
+                <a href="nosotros.html">NOSOTROS</a>
+                <a href="contact.html">CONTACTO</a>
+            </div>
+        </div>
+
         <div class="logo-container">
             <div class="logo">
                 <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
             </div>
             <div class="logo-text">
-                <h3>FULL HOUSE VINTAGE</h3>
+                <h3><span>FULL HOUSE VINTAGE</span></h3>
             </div>
         </div>
 
-        <nav>
+        <nav class="desktop-nav">
             <ul class="menu">
                 <li><a href="index.html">INICIO</a></li>
                 <li><a href="catalogo.html">CATÁLOGO</a></li>
