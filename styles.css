@@ -55,6 +55,7 @@ header {
     align-items: center;
     height: 100px; /* Cambiado de 80px a 100px */
     position: relative;
+    z-index: 1000;
 }
 
 .site-title {
@@ -543,7 +544,7 @@ nav {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     /* Estilos para móvil */
     .menu {
         flex-direction: column;
@@ -913,7 +914,7 @@ nav {
 }
 
 /* Media Query para móviles */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 300px) {
     /* Header y navegación */
     header {
         flex-wrap: wrap;
@@ -996,7 +997,7 @@ nav {
     /* El resto de los estilos móviles permanecen igual */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 300px) {
     header {
         padding: 0.5rem 1rem;
         height: 80px; /* Mantenemos una altura más pequeña en móviles */
@@ -1065,12 +1066,6 @@ nav {
     }
 }
 
-@media screen and (min-width: 601px) {
-    .mobile-menu,
-    .menu-toggle {
-        display: none;
-    }
-}
 
 /* Estilos para desktop */
 .desktop-menu {
@@ -1104,152 +1099,8 @@ nav {
     display: none;
 }
 
-/* Media Query para móviles */
-@media screen and (max-width: 600px) {
-    .desktop-menu {
-        display: none;
-    }
 
-    .mobile-menu {
-        display: block;
-    }
 
-    header {
-        padding: 0.5rem 1rem;
-        height: 80px; /* Mantenemos una altura más pequeña en móviles */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .mobile-nav {
-        position: fixed;
-        top: 60px;
-        left: -250px;
-        width: 100%; /* Cambiado para ocupar todo el ancho */
-        height: auto; /* Cambiado para ajustarse al contenido */
-        background-color: var(--color-primary);
-        transition: left 0.3s ease;
-        z-index: 1000;
-        padding: 1rem;
-    }
-
-    .mobile-nav.active {
-        left: 0;
-    }
-
-    .mobile-nav .menu {
-        flex-direction: row; /* Cambiado a row para disposición horizontal */
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
-    .mobile-nav .menu li {
-        width: auto; /* Cambiado para ajustarse al contenido */
-        padding: 0.5rem 1rem;
-        border: none; /* Eliminado el borde inferior */
-    }
-
-    .menu a,
-    .desktop-menu .menu li a {
-        font-size: 1.1rem; /* Ligeramente más pequeño en móviles */
-    }
-
-    /* ...rest of existing code... */
-}
-
-/* Estilos para desktop */
-@media screen and (min-width: 601px) {
-    .logo-text {
-        flex: 0;
-        margin-right: auto;
-        padding-left: 1rem;
-    }
-
-    .desktop-menu {
-        flex: 2;
-        display: flex;
-        justify-content: center;
-    }
-
-    .header-icons {
-        flex: 0;
-        margin-left: 2rem;
-    }
-
-    .mobile-menu,
-    .menu-toggle {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 601px) {
-    header {
-        display: flex;
-        justify-content: flex-start;
-        gap: 2rem;
-    }
-
-    .logo-text {
-        order: 1;
-        margin-right: 2rem;
-    }
-
-    .desktop-menu {
-        order: 2;
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    .header-icons {
-        order: 3;
-        margin-left: auto;
-        flex: 0;
-    }
-
-    .mobile-menu,
-    .menu-toggle {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 601px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-    }
-
-    .logo-text {
-        display: block;
-        margin: 0;
-        padding: 0;
-        flex: 0 0 auto;
-        order: 1;
-    }
-
-    .logo-text h3 {
-        font-size: 1.4rem;
-        color: var(--color-white);
-        white-space: nowrap;
-        margin: 0;
-    }
-
-    .desktop-menu {
-        order: 2;
-        flex: 1;
-        margin: 0 2rem;
-    }
-
-    .header-icons {
-        order: 3;
-        flex: 0 0 auto;
-    }
-}
 
 /* Splash Screen */
 .splash-screen {
@@ -1357,7 +1208,7 @@ nav {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
     /* Header y navegación */
     header {
         padding: 0.5rem 1rem;
@@ -1380,7 +1231,7 @@ nav {
     }
 
     .mobile-nav.active {
-        left: 0;
+        left: 1;
     }
 
     .mobile-nav .menu {
@@ -3698,4 +3549,142 @@ body.showCart .container {
         font-size: 0.8rem;
         padding: 0.4rem;
     }
+}
+
+/* Ajustar el texto de bienvenida para móviles */
+@media screen and (max-width: 768px) {
+    .welcome-message h1 {
+        font-size: 2rem; /* Reducido de 4rem a 2rem */
+        padding: 0 1rem; /* Añadir padding para evitar que el texto toque los bordes */
+    }
+}
+
+/* Para pantallas aún más pequeñas */
+@media screen and (max-width: 480px) {
+    .welcome-message h1 {
+        font-size: 1.5rem; /* Aún más pequeño para pantallas muy pequeñas */
+    }
+}
+
+/* Estilos para el menú hamburguesa */
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-white);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    padding-top: 80px;
+    z-index: 1002; /* Aumentar para estar sobre todos los elementos */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animación del menú hamburguesa */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .mobile-nav {
+        display: block;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Prevenir scroll cuando el menú está activo */
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+
+    .nav-links {
+        padding-top: 100px; /* Dar más espacio arriba */
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Cuando el menú está activo, ocultar los iconos del header */
+body.menu-open .header-icons {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Ajustar la visibilidad del carrito cuando el menú está activo */
+body.menu-open .cartTab {
+    z-index: 1001;
+    right: -100%; /* Forzar que el carrito se oculte */
+    transition: right 0.3s ease;
 }

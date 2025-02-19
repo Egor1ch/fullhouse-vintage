@@ -34,6 +34,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Añadir al inicio del archivo
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+
+    function toggleMenu() {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+
+    // Toggle menú al hacer click en el botón
+    hamburgerBtn.addEventListener('click', toggleMenu);
+
+    // Cerrar menú al hacer click en un enlace
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMenu();
+        });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && 
+            !hamburgerBtn.contains(e.target) && 
+            mobileMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
+    // Cerrar menú al redimensionar la ventana
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
 // Manejo de la splash screen
 document.addEventListener('DOMContentLoaded', function() {
     const splashScreen = document.querySelector('.splash-screen');
