@@ -3807,20 +3807,10 @@ body.menu-open .cartTab {
     }
 
     .logo-text h3 {
-        font-size: 0.8rem;
+        font-size: 140%;
         white-space: normal;
         display: flex;
         flex-direction: column;
         gap: 2px;
-    }
-
-    .logo-text h3::after {
-        content: 'FULL\A HOUSE\A VINTAGE';
-        white-space: pre;
-        display: block;
-    }
-
-    .logo-text h3 span {
-        display: none; /* Ocultar el texto original */
     }
 }

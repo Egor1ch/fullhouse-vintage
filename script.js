@@ -1080,3 +1080,109 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Funcionalidad del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileNav = document.getElementById('mobileNav');
+    const body = document.body;
+
+    menuButton.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuButton.classList.remove('active');
+            mobileNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && 
+            !menuButton.contains(e.target) && 
+            mobileNav.classList.contains('active')) {
+            menuButton.classList.remove('active');
+            mobileNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+});
+
+// Simplificar la funcionalidad del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const body = document.body;
+
+    // Función para alternar el menú
+    function toggleMenu() {
+        hamburgerBtn.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+
+    // Event listener para el botón hamburguesa
+    hamburgerBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Cerrar menú al hacer click en los enlaces
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', function(e) {
+        if (mobileNav.classList.contains('active') &&
+            !mobileNav.contains(e.target) &&
+            !hamburgerBtn.contains(e.target)) {
+            toggleMenu();
+        }
+    });
+
+    // Prevenir que clicks dentro del menú lo cierren
+    mobileNav.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+
+// Funcionalidad del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileNav = document.getElementById('mobileNav');
+    const body = document.body;
+
+    menuButton.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuButton.classList.remove('active');
+            mobileNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && 
+            !menuButton.contains(e.target) && 
+            mobileNav.classList.contains('active')) {
+            menuButton.classList.remove('active');
+            mobileNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+});
