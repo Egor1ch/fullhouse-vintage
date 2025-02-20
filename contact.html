@@ -46,12 +46,6 @@
         </nav>
 
         <div class="header-icons">
-            <form class="search-container" id="searchForm" onsubmit="handleSearch(event)">
-                <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
-                <button type="submit" class="search-icon">
-                    <img src="IMGs/search.png" alt="Buscar" class="header-icon">
-                </button>
-            </form>
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
                 <span>0</span>
@@ -61,7 +55,7 @@
             </a>
         </div>
     </header>
-
+    <!-- Añadir esto justo después del header en todas las páginas que no lo tengan -->
     <div class="cartTab">
         <h1>Carrito de Compras</h1>
         <div class="listCart">
@@ -219,18 +213,9 @@
             <p>&copy; 2024 Full House Vintage. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script src="script.js" defer></script>
-    <script>
-        function handleSearch(event) {
-            event.preventDefault();
-            const searchInput = document.getElementById('searchInput');
-            const query = searchInput.value.trim();
-            
-            if (query) {
-                window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
-            }
-        }
-    </script>
+    <!-- Cargar script.js antes de otros scripts -->
+    <script src="script.js"></script>
+    <!-- Otros scripts específicos de la página después -->
+    <script src="form_validation.js" defer></script>
 </body>
 </html>

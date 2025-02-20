@@ -56,12 +56,6 @@
 
         <!-- Reemplazar la sección del header-icons con esto en cada página -->
         <div class="header-icons">
-            <form class="search-container" id="searchForm" onsubmit="handleSearch(event)">
-                <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos...">
-                <button type="submit" class="search-icon">
-                    <img src="IMGs/search.png" alt="Buscar" class="header-icon">
-                </button>
-            </form>
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
                 <span>0</span>
@@ -287,9 +281,7 @@
                     }
                 });
             }
-        });
-    </script>
-    <!-- Añadir antes del cierre del </body> en cada página -->
-    <script src="script.js" defer></script>
-</body>
-</html>
+            });
+        </script>
+    </body>
+    </html>

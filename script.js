@@ -641,7 +641,7 @@ function displayProducts(productsToShow) {
     productsGrid.innerHTML = '';
     
     if (productsToShow.length === 0) {
-        productsGrid.innerHTML = '<div class="no-results">No se encontraron productos que coincidan con tu búsqueda</div>';
+        productsGrid.innerHTML = '<div class="no-results">No se encontraron productos</div>';
         return;
     }
 
@@ -885,4 +885,198 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.remove('menu-open');
         });
     });
+});
+
+// Event listeners para la búsqueda en todas las páginas
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.querySelector('.search-container form');
+    const searchInput = document.querySelector('.search-input');
+
+    // Primero cargar los productos si estamos en la página de catálogo
+    if (window.location.pathname.includes('catalogo.html')) {
+        loadProducts().then(() => {
+            // Verificar si hay un parámetro de búsqueda en la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+            
+            if (searchQuery) {
+                // Establecer el valor en el input de búsqueda
+                searchInput.value = searchQuery;
+                // Realizar la búsqueda
+                searchProducts(searchQuery);
+            }
+        });
+    }
+
+    // Manejar el envío del formulario de búsqueda
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            
+            if (!query) return;
+
+            if (window.location.pathname.includes('catalogo.html')) {
+                // Si ya estamos en el catálogo, realizar la búsqueda directamente
+                searchProducts(query);
+                // Actualizar la URL sin recargar la página
+                const url = new URL(window.location);
+                url.searchParams.set('search', query);
+                window.history.pushState({}, '', url);
+            } else {
+                // Si no estamos en el catálogo, redirigir
+                window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
+            }
+        });
+    }
+});
+
+// Función de búsqueda mejorada
+function searchProducts(query) {
+    if (!window.products) {
+        console.error('Los productos no se han cargado todavía');
+        return;
+    }
+
+    query = query.toLowerCase().trim();
+    const productsGrid = document.getElementById('productsGrid');
+    
+    if (!productsGrid) {
+        console.error('No se encontró el contenedor de productos');
+        return;
+    }
+
+    if (!query) {
+        displayProducts(window.products);
+        return;
+    }
+
+    const filteredProducts = window.products.filter(product => 
+        product.name.toLowerCase().includes(query) ||
+        (product.description && product.description.toLowerCase().includes(query)) ||
+        (product.category && product.category.toLowerCase().includes(query)) ||
+        (product.decade && product.decade.toLowerCase().includes(query))
+    );
+
+    displayProducts(filteredProducts);
+
+    // Actualizar la URL con el término de búsqueda
+    const url = new URL(window.location);
+    url.searchParams.set('search', query);
+    window.history.pushState({}, '', url);
+}
+
+// Función simplificada para cargar productos
+async function loadProducts() {
+    try {
+        const response = await fetch('data/products.json');
+        const data = await response.json();
+        window.products = data.products;
+        
+        // Si estamos en la página de catálogo, mostrar los productos
+        if (document.getElementById('productsGrid')) {
+            displayProducts(data.products);
+        }
+    } catch (error) {
+        console.error('Error al cargar los productos:', error);
+    }
+}
+
+// Función simplificada de búsqueda
+function searchProducts(query) {
+    // Si no estamos en la página de catálogo, redirigir
+    if (!document.getElementById('productsGrid')) {
+        window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
+        return;
+    }
+
+    if (!window.products) {
+        console.error('Los productos no se han cargado');
+        return;
+    }
+
+    query = query.toLowerCase().trim();
+    
+    if (!query) {
+        displayProducts(window.products);
+        return;
+    }
+
+    const filteredProducts = window.products.filter(product => 
+        product.name.toLowerCase().includes(query) ||
+        (product.description && product.description.toLowerCase().includes(query)) ||
+        (product.category && product.category.toLowerCase().includes(query)) ||
+        (product.decade && product.decade.toLowerCase().includes(query))
+    );
+
+    displayProducts(filteredProducts);
+}
+
+// Event listener principal para la búsqueda
+document.addEventListener('DOMContentLoaded', function() {
+    // Cargar productos
+    loadProducts().then(() => {
+        // Si hay un parámetro de búsqueda en la URL, realizar la búsqueda
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        
+        if (searchQuery) {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = searchQuery;
+                searchProducts(searchQuery);
+            }
+        }
+    });
+
+    // Manejar el formulario de búsqueda
+    const searchForm = document.getElementById('searchForm');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim();
+            if (query) {
+                searchProducts(query);
+            }
+        });
+    }
+});
+
+// Colocar al inicio del archivo, justo después de las declaraciones de variables
+document.addEventListener('DOMContentLoaded', function() {
+    // Asegurarse de que los elementos del carrito existan
+    const cartIcon = document.querySelector('.icon-cart');
+    const cartTab = document.querySelector('.cartTab');
+    const closeCart = document.querySelector('.cartTab .close');
+
+    if (cartIcon && cartTab) {
+        // Abrir carrito
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            document.body.classList.add('showCart');
+        });
+
+        // Cerrar carrito con botón
+        if (closeCart) {
+            closeCart.addEventListener('click', () => {
+                document.body.classList.remove('showCart');
+            });
+        }
+
+        // Cerrar carrito al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!cartTab.contains(e.target) && 
+                !cartIcon.contains(e.target) && 
+                document.body.classList.contains('showCart')) {
+                document.body.classList.remove('showCart');
+            }
+        });
+
+        // Prevenir cierre al hacer clic dentro del carrito
+        cartTab.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
 });

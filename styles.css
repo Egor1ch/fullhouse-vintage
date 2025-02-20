@@ -143,6 +143,35 @@ header {
     .logo-container {
         margin: 0 auto;
     }
+
+    .logo-container {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .logo-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .logo-text h3 {
+        font-size: 1rem;
+        white-space: nowrap; /* Forzar una línea */
+        overflow: hidden; /* Prevenir desbordamiento */
+        text-overflow: ellipsis; /* Mostrar ... si no cabe */
+    }
+
+    .logo-text h3::after {
+        display: none;
+    }
+
+    .logo-text h3 span {
+        display: inline; /* Mostrar el texto en línea */
+    }
 }
 
 .main-nav {
