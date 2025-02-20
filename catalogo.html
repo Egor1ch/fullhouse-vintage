@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Lo básico para que todo funcione bien -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Fullhouse Vintage</title>
@@ -8,8 +9,9 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- El header con el menú hamburguesa responsive -->
     <header>
-        <!-- Nuevo botón hamburguesa -->
+        <!-- Menú hamburguesa para móvil-->
         <div class="mobile-nav">
             <button class="hamburger" id="hamburgerBtn">
                 <span></span>
@@ -27,6 +29,7 @@
             </div>
         </div>
 
+        <!-- El logo-->
         <div class="logo-container">
             <div class="logo">
                 <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
@@ -36,6 +39,7 @@
             </div>
         </div>
 
+        <!-- Navegación normal para PC  -->
         <nav class="desktop-nav">
             <ul class="menu">
                 <li><a href="index.html">INICIO</a></li>
@@ -45,6 +49,7 @@
             </ul>
         </nav>
 
+        <!-- Iconitos  del carrito y perfil -->
         <div class="header-icons">
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
@@ -56,6 +61,7 @@
         </div>
     </header>
 
+    <!-- El carrito que se desliza desde el lado  -->
     <div class="cartTab">
         <h1>Carrito de Compras</h1>
         <div class="listCart">
@@ -67,11 +73,12 @@
         </div>
     </div>
 
-    <!-- Rejilla de productos -->
+    <!-- Aquí van todos los productos (se cargan con JavaScript) -->
     <section class="products-grid" id="productsGrid">
-        <!-- Los productos se cargarán aquí dinámicamente -->
+        <!-- Los productos se cargan automáticamente, mola ¿eh? -->
     </section>
 
+    <!-- Footer con toda la info necesaria -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -119,36 +126,9 @@
         </div>
     </footer>
 
+    <!-- La parte de JavaScript que hace que todo funcione ) -->
     <script>
-        // Código para la paginación
-        document.querySelectorAll('.page-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const page = this.dataset.page;
-                const url = new URL(window.location);
-                url.searchParams.set('page', page);
-                window.location.href = url;
-            });
-        });
-
-        // Funcionalidad para añadir al carrito
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.closest('.product-card');
-                const productName = product.querySelector('h3').textContent;
-                alert(`${productName} añadido al carrito`);
-            });
-        });
-
-        // Funcionalidad para vista rápida
-        document.querySelectorAll('.quick-view-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.closest('.product-card');
-                const productName = product.querySelector('h3').textContent;
-                alert(`Vista rápida de ${productName}`);
-            });
-        });
-
-        // Cargar productos
+        // Esta función carga los productos desde un JSON
         async function loadProducts() {
             try {
                 const response = await fetch('data/products.json');
@@ -185,7 +165,7 @@
             }
         }
 
-        // Cargar productos cuando la página se carga
+        // Cargar todo cuando la página esté lista 
         document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 </body>

@@ -1,4 +1,3 @@
-/* Variables de colores - Actualizado a esquema blanco y negro */
 :root {
     --color-primary: #000000;
     --color-secondary: #333333;
@@ -7,7 +6,7 @@
     --color-white: #FFFFFF;
 }
 
-/* Estilos generales */
+/* reset de estilos  */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +14,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Esta parte es para que la barra de scroll no haga que la página salte*/
 html {
     overflow-y: scroll; /* Fuerza la barra de desplazamiento siempre visible */
     scrollbar-width: thin; /* Para Firefox */
@@ -46,7 +46,7 @@ body {
     background: var(--color-primary);
 }
 
-/* Header y navegación */
+/* ¡La parte del header!  */
 header {
     background-color: var(--color-primary);
     padding: 0.5rem 2rem;
@@ -284,7 +284,7 @@ nav {
     margin: 0 auto;
 }
 
-/* Slider - Actualizado con borde */
+/* El slider de la página */
 .slider {
     width: 100%;
     height: 300px; /* Reducido de 500px a 300px */
@@ -345,80 +345,17 @@ nav {
 /* Media queries actualizados para el slider */
 @media (max-width: 1300px) {
     .slider {
-        height: 250px; /* Reducido de 400px a 250px */
+        height: 250px; 
     }
 }
 
 @media (max-width: 600px) {
     .slider {
-        height: 200px; /* Reducido de 300px a 200px */
+        height: 200px; 
     }
 }
 
-/* Navegación manual */
-.navigation-manual {
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.manual-btn {
-    border: 2px solid #fff;
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.manual-btn:hover {
-    background: #fff;
-}
-
-/* CSS para la navegación automática */
-.navigation-auto {
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.navigation-auto div {
-    border: 2px solid #fff;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-/* CSS para los radio buttons */
-#radio1:checked ~ .first {
-    margin-left: 0;
-}
-
-#radio2:checked ~ .first {
-    margin-left: -20%;
-}
-
-#radio3:checked ~ .first {
-    margin-left: -40%;
-}
-
-#radio4:checked ~ .first {
-    margin-left: -60%;
-}
-
-#radio1:checked ~ .navigation-auto .auto-btn1,
-#radio2:checked ~ .navigation-auto .auto-btn2,
-#radio3:checked ~ .navigation-auto .auto-btn3,
-#radio4:checked ~ .navigation-auto .auto-btn4 {
-    background: #fff;
-}
-
-/* Aviso de cookies */
+/* El aviso de cookies.. */
 .cookie-notice {
     position: fixed;
     bottom: 0;
@@ -569,7 +506,7 @@ nav {
 @media (max-width: 1300px) {
     /* Estilos para PC */
     .slider {
-        height: 250px; /* Reducido de 400px a 250px */
+        height: 250px; 
     }
 }
 
@@ -581,7 +518,7 @@ nav {
     }
     
     .slider {
-        height: 200px; /* Reducido de 300px a 200px */
+        height: 200px; 
     }
 }
 
@@ -590,10 +527,10 @@ nav {
     gap: 1.5rem;
     align-items: center;
     position: absolute;
-    right: 40px; /* Cambiado de 20px a 40px para mover los iconos hacia la izquierda */
+    right: 40px; 
     top: 50%;
     transform: translateY(-50%);
-    margin-right: 20px; /* Añadido margen extra a la derecha */
+    margin-right: 20px; 
 }
 
 .header-icon {
@@ -636,14 +573,14 @@ nav {
 .logo-text {
     color: var(--color-white);
     margin-left: -10px;
-    white-space: nowrap; /* Forzar una sola línea */
-    overflow: hidden; /* Prevenir desbordamiento */
+    white-space: nowrap;
+    overflow: hidden; 
 }
 
 .logo-text h3 {
     margin: 0;
     font-size: 1.5rem;
-    display: inline-block; /* Mantener todo en línea */
+    display: inline-block;
 }
 
 /* Para dispositivos móviles */
@@ -910,7 +847,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad aquí */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -923,7 +860,7 @@ nav {
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
-    animation-delay: 2.5s; /* Aparece después del splash screen */
+    animation-delay: 2.5s; 
 }
 
 .welcome-message h1 {
@@ -952,9 +889,9 @@ nav {
     }
 
     .site-title {
-        font-size: 1rem; /* Reducido de 1.2rem */
+        font-size: 1rem; 
         padding: 0 10px;
-        min-width: 0; /* Permite que flex-basis funcione correctamente */
+        min-width: 0; 
         flex: 1;
         text-align: center;
     }
@@ -1020,16 +957,16 @@ nav {
     }
 
     .logo-text h3 {
-        font-size: 1rem; /* Tamaño más pequeño para móviles */
+        font-size: 1rem; 
     }
 
-    /* El resto de los estilos móviles permanecen igual */
+
 }
 
 @media screen and (max-width: 300px) {
     header {
         padding: 0.5rem 1rem;
-        height: 80px; /* Mantenemos una altura más pequeña en móviles */
+        height: 80px; 
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1115,12 +1052,12 @@ nav {
     color: var(--color-white);
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem; /* Añadido el mismo tamaño para consistencia */
-    transition: opacity 0.3s ease; /* Cambiado de color a opacity */
+    font-size: 1.2rem; 
+    transition: opacity 0.3s ease; 
 }
 
 .desktop-menu .menu li a:hover {
-    opacity: 0.7; /* Cambiado de color a opacity */
+    opacity: 0.7; 
 }
 
 /* Ocultar menú móvil en desktop */
@@ -1172,51 +1109,6 @@ nav {
     }
 }
 
-/* Estilos para la barra de búsqueda */
-.search-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-right: 1rem;
-}
-
-.search-input {
-    width: 200px; /* Cambiar de 0 al ancho deseado */
-    opacity: 1; /* Cambiar de 0 a 1 para que sea siempre visible */
-    padding: 8px 35px 8px 12px;
-    border: none;
-    border-radius: 20px;
-    background-color: var(--color-white);
-    font-size: 14px;
-    transition: all 0.3s ease;
-    margin-right: 10px;
-}
-
-.search-input:focus {
-    width: 250px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    outline: none;
-}
-
-.search-container:hover .search-input,
-.search-input:focus {
-    width: 150px;
-}
-
-.search-icon {
-    position: absolute;
-    right: -30px; /* Cambiado de 10px a -30px para mover el icono hacia la derecha */
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.search-icon img {
-    width: 24px;
-    height: 24px;
-}
-
 /* Ajuste para móviles */
 @media screen and (max-width: 768px) {
     .search-container:hover .search-input,
@@ -1229,11 +1121,11 @@ nav {
     }
 
     .search-container {
-        margin-right: 2.5rem; /* Aumentado el margen derecho en móviles */
+        margin-right: 2.5rem; 
     }
     
     .search-icon {
-        right: -25px; /* Ajustado para móviles */
+        right: -25px; 
     }
 }
 
@@ -1241,7 +1133,7 @@ nav {
     /* Header y navegación */
     header {
         padding: 0.5rem 1rem;
-        height: 80px; /* Mantenemos una altura más pequeña en móviles */
+        height: 80px; 
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1251,8 +1143,8 @@ nav {
         position: fixed;
         top: 60px;
         left: -100%;
-        width: 100%; /* Cambiado para ocupar todo el ancho */
-        height: auto; /* Cambiado para ajustarse al contenido */
+        width: 100%; 
+        height: auto; 
         background-color: var(--color-primary);
         transition: left 0.3s ease;
         z-index: 1000;
@@ -1264,7 +1156,7 @@ nav {
     }
 
     .mobile-nav .menu {
-        flex-direction: row; /* Cambiado a row para disposición horizontal */
+        flex-direction: row; 
         justify-content: center;
         flex-wrap: wrap;
         gap: 1rem;
@@ -1272,15 +1164,13 @@ nav {
     }
 
     .mobile-nav .menu li {
-        width: auto; /* Cambiado para ajustarse al contenido */
+        width: auto; 
         padding: 0.5rem 1rem;
-        border: none; /* Eliminado el borde inferior */
+        border: none; 
     }
 
-    /* ...rest of existing code... */
 }
 
-/* Explore Section - Actualizado */
 .explore-section {
     padding: 4rem 2rem;
     background-color: var(--color-light);
@@ -1342,7 +1232,6 @@ nav {
     transform: scale(1.1);
 }
 
-/* Category Cards - Actualizado */
 .category-info {
     position: absolute;
     bottom: 0;
@@ -1359,7 +1248,6 @@ nav {
     font-weight: bold;
 }
 
-/* Featured Section - Actualizado */
 .featured-section {
     padding: 4rem 2rem;
     background-color: var(--color-white);
@@ -1383,12 +1271,12 @@ nav {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar contenido */
+    align-items: center;
     gap: 0.5rem;
     padding: 1rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
-    text-align: center; /* Asegurar que el texto esté centrado */
+    text-align: center; 
 }
 
 .featured-item .product-link {
@@ -1418,7 +1306,7 @@ nav {
 }
 
 .featured-item .add-to-cart {
-    width: 60%; /* Reducido del 100% al 60% */
+    width: 60%;
     padding: 0.8rem;
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -1432,7 +1320,6 @@ nav {
     background-color: var(--color-secondary);
 }
 
-/* Media queries para productos destacados */
 @media (max-width: 768px) {
     .featured-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1445,11 +1332,11 @@ nav {
     }
 }
 
-/* Newsletter Section - Actualizado */
+/* Newsletter Section */
 .newsletter-section {
     background-color: var(--color-primary);
     color: var(--color-white);
-    padding: 4rem 2rem 0; /* Modificado: eliminado el padding inferior */
+    padding: 4rem 2rem 0;
     text-align: center;
 }
 
@@ -1485,7 +1372,6 @@ nav {
     background-color: var(--color-light);
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
     .categories-grid,
     .featured-grid {
@@ -1504,7 +1390,7 @@ nav {
 /* Estilos para la página Sobre Nosotros */
 .about-hero {
     height: 60vh;
-    background-image: url('IMGs/4.png'); /* Actualizada la ruta de la imagen */
+    background-image: url('IMGs/4.png'); 
     background-size: cover;
     background-position: center;
     display: flex;
@@ -1512,7 +1398,7 @@ nav {
     justify-content: center;
     color: var(--color-white);
     text-align: center;
-    position: relative; /* Añadido para el overlay */
+    position: relative;
 }
 
 .about-hero::before {
@@ -1522,13 +1408,13 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Cambiado de 0.3 a 0.5 para coincidir con carousel-overlay */
+    background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1;
 }
 
 .about-hero-content {
     position: relative;
-    z-index: 2; /* Asegura que el contenido esté sobre el overlay */
+    z-index: 2; 
 }
 
 .about-hero-content h1 {
@@ -1541,20 +1427,20 @@ nav {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 4rem 2rem;
-    max-width: 1200px; /* Aumentado de 800px a 1200px */
+    max-width: 1200px; 
     margin: 0 auto;
 }
 
 .story-text {
     text-align: justify;
-    line-height: 1.8; /* Aumentado de 1.6 a 1.8 para mejor legibilidad */
-    max-width: 1000px; /* Añadido para controlar el ancho máximo del texto */
+    line-height: 1.8; 
+    max-width: 1000px; 
     margin: 0 auto;
-    padding: 0 20px; /* Añadido padding lateral */
+    padding: 0 20px;
 }
 
 .story-text p {
-    font-size: 1.1rem; /* Aumentado ligeramente el tamaño de letra */
+    font-size: 1.1rem; 
     margin-bottom: 1.5rem;
 }
 
@@ -1578,7 +1464,6 @@ nav {
     margin-bottom: 1rem;
 }
 
-/* Estilos específicos para móviles */
 @media (max-width: 768px) {
     .values-grid {
         grid-template-columns: 1fr;
@@ -1607,11 +1492,11 @@ nav {
     line-height: 1.5;
 }
 
-/* Media query para móviles */
+
 @media (max-width: 768px) {
     .value-card img {
-        width: 400px; /* Aumentado de 180px */
-        height: 400px; /* Aumentado de 180px */
+        width: 400px; 
+        height: 400px; 
     }
 }
 
@@ -1627,10 +1512,10 @@ nav {
     line-height: 1.5;
 }
 
-/* Media query para móviles */
+
 @media (max-width: 768px) {
     .value-card img {
-        width: 400px; /* Tamaño más pequeño en móviles */
+        width: 400px; 
         height: 400px;
     }
 }
@@ -1715,11 +1600,11 @@ nav {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Cambiado de auto-fill a 5 columnas fijas */
+    grid-template-columns: repeat(5, 1fr); 
     gap: 2rem;
     padding: 2rem;
-    max-width: 1400px; /* Añadido para controlar mejor el ancho máximo */
-    margin: 0 auto; /* Centrar la rejilla */
+    max-width: 1400px; 
+    margin: 0 auto;
 }
 
 .product-card {
@@ -1819,10 +1704,10 @@ nav {
     color: var(--color-primary);
 }
 
-/* Media query para móviles */
+
 @media (max-width: 768px) {
     .product-image {
-        height: 250px; /* Altura más pequeña en móviles */
+        height: 250px; 
     }
 }
 
@@ -1881,17 +1766,17 @@ nav {
 
 /* Estilos para la sección de productos destacados en catálogo */
 .featured-products {
-    padding: 2rem 2rem 1rem; /* Reducido de 4rem 2rem 2rem */
+    padding: 2rem 2rem 1rem; 
     background-color: var(--color-white);
 }
 
 .featured-products .featured-grid {
-    max-width: 1000px; /* Reducido de 1200px */
+    max-width: 1000px; 
     margin: 0 auto;
 }
 
 .featured-products .featured-item img {
-    height: 250px; /* Reducido de 300px */
+    height: 250px; 
 }
 
 .featured-products h2 {
@@ -1901,7 +1786,7 @@ nav {
     font-size: 1.8rem; /* Reducido de 2rem */
 }
 
-/* Media query para móviles */
+
 @media (max-width: 768px) {
     .featured-products {
         padding: 1.5rem 1rem;
@@ -1917,7 +1802,6 @@ nav {
     }
 }
 
-/* Media query para móviles */
 @media (max-width: 768px) {
     .featured-products {
         padding: 2rem 1rem;
@@ -1934,7 +1818,7 @@ nav {
     background-color: var(--color-primary);
     color: var(--color-white);
     padding: 4rem 2rem 2rem;
-    margin-top: 0; /* Cambiado de 4rem a 0 */
+    margin-top: 0; 
 }
 
 .footer-content {
@@ -1988,15 +1872,15 @@ nav {
 }
 
 .social-icon {
-    width: 24px; /* Reducido de tamaño por defecto */
-    height: 24px; /* Reducido de tamaño por defecto */
+    width: 24px; 
+    height: 24px;
     transition: opacity 0.3s ease;
 }
 
 .social-links a {
     color: var(--color-white);
     text-decoration: none;
-    display: flex; /* Añadido para mejor control del tamaño */
+    display: flex; 
     align-items: center;
     justify-content: center;
 }
@@ -2004,7 +1888,7 @@ nav {
 /* Media query para móviles */
 @media (max-width: 768px) {
     .social-icon {
-        width: 20px; /* Ligeramente más pequeño en móviles */
+        width: 20px; 
         height: 20px;
     }
 }
@@ -2038,7 +1922,7 @@ nav {
     }
 }
 
-/* Estilos para las páginas de información */
+
 .privacy-section,
 .shipping-section,
 .returns-section {
@@ -2146,7 +2030,7 @@ nav {
     background: var(--color-white);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    min-height: 400px; /* Altura mínima para evitar saltos bruscos */
+    min-height: 400px; 
     width: 100%;
     margin: 0 auto;
 }
@@ -2247,7 +2131,6 @@ nav {
     }
 }
 
-/* Estilos actualizados para el perfil */
 .profile-section {
     max-width: 1200px;
     margin: 4rem auto;
@@ -2296,7 +2179,6 @@ nav {
     background-color: var(--color-primary);
 }
 
-/* Contenido de las pestañas */
 .tab-content {
     display: none;
     padding: 2rem;
@@ -2309,7 +2191,7 @@ nav {
     display: block;
 }
 
-/* Estilos para la lista de pedidos */
+
 .orders-list {
     display: flex;
     flex-direction: column;
@@ -2337,14 +2219,13 @@ nav {
     color: white;
 }
 
-/* Estilos para favoritos */
 .favorites-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-/* Estilos para el carrito */
+
 .cart-items {
     display: flex;
     flex-direction: column;
@@ -2445,7 +2326,7 @@ quantity-controls input {
     }
 }
 
-/* Actualizar estilos para acciones y botones */
+
 .action-btn {
     padding: 0.8rem 1.5rem;
     border: none;
@@ -2491,19 +2372,6 @@ quantity-controls input {
     margin-top: 1.5rem;
 }
 
-/* Estilos actualizados para favoritos */
-.product-actions {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 90%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
 .product-card:hover .product-actions {
     opacity: 1;
@@ -2514,7 +2382,6 @@ quantity-controls input {
     text-align: center;
 }
 
-/* Estilos actualizados para el carrito */
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -2564,7 +2431,6 @@ quantity-controls input {
     color: var(--color-primary);
 }
 
-/* Estilos actualizados para los detalles del pedido */
 .order-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2576,7 +2442,6 @@ quantity-controls input {
     margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .order-info {
         grid-template-columns: 1fr;
@@ -2593,7 +2458,6 @@ quantity-controls input {
     }
 }
 
-/* Estilos actualizados para el catálogo */
 .product-card {
     position: relative;
     background: var(--color-white);
@@ -2741,31 +2605,8 @@ quantity-controls input {
     background: var(--color-secondary);
 }
 
-/* Estilos para los filtros */
-.catalog-filters {
-    background: var(--color-white);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
 
-.filter-container {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
-.filter-select {
-    padding: 0.8rem;
-    border: 1px solid var(--color-primary);
-    border-radius: 4px;
-    min-width: 200px;
-    cursor: pointer;
-    background-color: var(--color-white);
-}
-
-/* Media queries */
 @media (max-width: 768px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -3090,7 +2931,6 @@ quantity-controls input {
     border-bottom: 1px solid var(--color-light);
 }
 
-/* Media queries para la página de producto */
 @media (max-width: 768px) {
     .product-detail-container {
         grid-template-columns: 1fr;
@@ -3117,7 +2957,7 @@ quantity-controls input {
 
 /* Estilos para la página en desarrollo */
 .under-development {
-    height: calc(100vh - 200px); /* Altura total menos header y footer */
+    height: calc(100vh - 200px); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -3130,11 +2970,11 @@ quantity-controls input {
     padding: 2rem;
 }
 
-/* Añadir estos estilos para el carrito */
+
 .icon-cart {
     position: relative;
     cursor: pointer;
-    z-index: 1001; /* Asegurar que esté por encima del cartTab */
+    z-index: 1001; 
 }
 
 .icon-cart span {
@@ -3170,7 +3010,6 @@ body.showCart .cartTab {
     right: 0;
 }
 
-/* Media query para dispositivos móviles */
 @media (max-width: 768px) {
     .cartTab {
         width: 100%;
@@ -3213,7 +3052,7 @@ body.showCart .container {
 
 .listCart .item {
     display: grid;
-    grid-template-columns: 70px 150px 70px 30px; /* Ajustado para el botón eliminar */
+    grid-template-columns: 70px 150px 70px 30px; 
     gap: 10px;
     text-align: center;
     align-items: center;
@@ -3221,7 +3060,7 @@ body.showCart .container {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Añadir estilos para el botón eliminar */
+
 .remove-btn {
     background: none;
     border: none;
@@ -3239,7 +3078,7 @@ body.showCart .container {
     color: #ff4444;
 }
 
-/* Eliminar estilos antiguos de quantity */
+
 .listCart .item .quantity {
     display: none;
 }
@@ -3275,43 +3114,6 @@ body.showCart .container {
     justify-content: center;
 }
 
-/* Estilos para resultados de búsqueda */
-.no-results {
-    text-align: center;
-    padding: 2rem;
-    font-size: 1.2rem;
-    color: var(--color-secondary);
-    grid-column: 1 / -1;
-    background-color: var(--color-light);
-    border-radius: 8px;
-    margin: 1rem 0;
-}
-
-/* Estilos para la página de respuesta */
-.response-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 2rem;
-    background: var(--color-white);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.response-container h2 {
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-}
-
-.response-container ul {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
-}
-
-.response-container li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--color-light);
-}
 
 .back-button {
     display: inline-block;
@@ -3372,7 +3174,7 @@ body.showCart .container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Grid de dos columnas */
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 3rem;
@@ -3388,22 +3190,21 @@ body.showCart .container {
 }
 
 .logo-response img {
-    width: 600px; /* Cambiado de 300px a 600px */
+    width: 600px;
     height: auto;
     filter: brightness(0);
 }
 
 @media (max-width: 768px) {
     .contact-container {
-        grid-template-columns: 1fr; /* Una columna en móvil */
+        grid-template-columns: 1fr;
     }
     
     .logo-response img {
-        width: 400px; /* Cambiado de 200px a 400px para mantener la proporción en móvil */
+        width: 400px; 
     }
 }
 
-/* Estilos actualizados para móviles */
 @media screen and (max-width: 768px) {
     header {
         padding: 0.5rem;
@@ -3467,23 +3268,22 @@ body.showCart .container {
         max-width: 200px;
         margin: 0.5rem auto;
         padding: 0;
-        position: relative; /* Añadido */
+        position: relative;
     }
 
     .search-input {
         width: 100%;
         max-width: 180px;
         font-size: 0.85rem;
-        padding: 0.4rem 0.8rem; /* Eliminado el padding derecho extra */
+        padding: 0.4rem 0.8rem;
         height: 30px;
     }
 
     .search-icon {
-        display: none; /* Ocultar el icono de búsqueda en móviles */
+        display: none;
     }
 }
 
-/* Mejoras adicionales para pantallas muy pequeñas */
 @media screen and (max-width: 360px) {
     .logo-container h3 {
         font-size: 0.9rem;
@@ -3500,7 +3300,6 @@ body.showCart .container {
     }
 }
 
-/* Ajustes actualizados para la barra de búsqueda en móviles */
 @media screen and (max-width: 768px) {
     .search-container {
         order: 4;
@@ -3515,19 +3314,19 @@ body.showCart .container {
         width: 100%;
         max-width: 180px;
         font-size: 0.85rem;
-        padding: 0.4rem 0.8rem; /* Eliminado el padding derecho extra */
+        padding: 0.4rem 0.8rem; 
         height: 30px;
     }
 
     .search-icon {
-        display: none; /* Ocultar el icono de búsqueda en móviles */
+        display: none;
     }
 }
 
-/* Ajustes adicionales para pantallas muy pequeñas */
+
 @media screen and (max-width: 360px) {
     .search-container {
-        max-width: 160px; /* Aún más estrecho para pantallas muy pequeñas */
+        max-width: 160px;
     }
 
     .search-input {
@@ -3553,13 +3352,13 @@ body.showCart .container {
     }
 
     .logo-container h3 {
-        display: none; /* Ocultar el nombre en móviles */
+        display: none;
     }
 
     .logo img {
-        height: 50px; /* Logo más grande en móviles */
+        height: 50px; 
         width: auto;
-        margin: 0 auto; /* Centrar el logo */
+        margin: 0 auto;
     }
 
     .menu {
@@ -3598,10 +3397,9 @@ body.showCart .container {
     }
 }
 
-/* Ajustes adicionales para pantallas más pequeñas */
 @media screen and (max-width: 360px) {
     .logo img {
-        height: 45px; /* Ligeramente más pequeño en pantallas muy pequeñas */
+        height: 45px;
     }
 
     .menu {
@@ -3614,18 +3412,16 @@ body.showCart .container {
     }
 }
 
-/* Ajustar el texto de bienvenida para móviles */
 @media screen and (max-width: 768px) {
     .welcome-message h1 {
-        font-size: 2rem; /* Reducido de 4rem a 2rem */
-        padding: 0 1rem; /* Añadir padding para evitar que el texto toque los bordes */
+        font-size: 2rem; 
+        padding: 0 1rem;
     }
 }
 
-/* Para pantallas aún más pequeñas */
 @media screen and (max-width: 480px) {
     .welcome-message h1 {
-        font-size: 1.5rem; /* Aún más pequeño para pantallas muy pequeñas */
+        font-size: 1.5rem; 
     }
 }
 
@@ -3658,7 +3454,7 @@ body.showCart .container {
     height: 100vh;
     background-color: var(--color-primary);
     padding-top: 80px;
-    z-index: 1002; /* Aumentar para estar sobre todos los elementos */
+    z-index: 1002; 
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -3727,7 +3523,7 @@ body.showCart .container {
     }
 
     .nav-links {
-        padding-top: 100px; /* Dar más espacio arriba */
+        padding-top: 100px;
     }
 
     .nav-links a {
@@ -3756,7 +3552,7 @@ body.menu-open .cartTab {
 .close-menu {
     position: absolute;
     top: 20px;
-    left: 20px; /* Cambiado de right: 20px a left: 20px */
+    left: 20px; 
     background: none;
     border: none;
     color: var(--color-white);
@@ -3825,5 +3621,15 @@ body.menu-open .cartTab {
         display: flex;
         flex-direction: column;
         gap: 2px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo-response img {
+        width: 400px;
     }
 }

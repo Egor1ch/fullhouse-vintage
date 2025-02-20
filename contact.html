@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Fullhouse Vintage</title>
+    <!-- Enlace al archivo CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Favicon del sitio -->
     <link rel="shortcut icon" href="IMGs/logo-white.ico" />
+    <!-- Script para validación del formulario -->
     <script src="form_validation.js" defer></script>
 </head>
 <body>
     <header>
+        <!-- Navegación móvil -->
         <div class="mobile-nav">
             <button class="hamburger" id="hamburgerBtn">
                 <span></span>
@@ -17,7 +22,7 @@
                 <span></span>
             </button>
             
-            <!-- Menú móvil -->
+            <!-- Menú móvil con enlaces a otras páginas -->
             <div class="nav-links" id="mobileMenu">
                 <button class="close-menu" id="closeMenu"></button>
                 <a href="index.html">INICIO</a>
@@ -27,6 +32,7 @@
             </div>
         </div>
 
+        <!-- Logo del sitio -->
         <div class="logo-container">
             <div class="logo">
                 <img src="IMGs/logo-white.png" alt="Fullhouse Vintage Logo">
@@ -36,6 +42,7 @@
             </div>
         </div>
 
+        <!-- Navegación para escritorio -->
         <nav class="desktop-nav">
             <ul class="menu">
                 <li><a href="index.html">INICIO</a></li>
@@ -45,6 +52,7 @@
             </ul>
         </nav>
 
+        <!-- Iconos en el header, como el carrito de compras y perfil -->
         <div class="header-icons">
             <div class="icon-cart" id="cartIcon">
                 <img src="IMGs/shopping-cart.png" alt="Carrito" class="header-icon">
@@ -55,11 +63,11 @@
             </a>
         </div>
     </header>
-    <!-- Añadir esto justo después del header en todas las páginas que no lo tengan -->
+    <!-- Sección para mostrar el carrito de compras -->
     <div class="cartTab">
         <h1>Carrito de Compras</h1>
         <div class="listCart">
-            <!-- Items del carrito irán aquí -->
+            <!-- Aquí se mostrarán los items del carrito -->
         </div>
         <div class="btn">
             <button class="close">Cerrar</button>
@@ -67,10 +75,11 @@
         </div>
     </div>
 
+    <!-- Sección de contacto -->
     <section class="contact-section">
         <h1>Contáctanos</h1>
         <div class="contact-container">
-            <!-- Formulario de contacto a la izquierda -->
+            <!-- Formulario de contacto -->
             <form class="contact-form" action="procesar_contacto.php" method="POST" onsubmit="return validarFormulario(event)">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
@@ -139,7 +148,7 @@
                 </div>
             </form>
 
-            <!-- Nueva sección de información de contacto -->
+            <!-- Información adicional de contacto -->
             <div class="contact-info">
                 <h3>Información de Contacto</h3>
                 <div class="info-item">
@@ -159,6 +168,7 @@
                     <p>Lunes a Viernes: 9:00 - 20:00<br>Sábados: 10:00 - 14:00</p>
                 </div>
                 <div class="social-links">
+                    <!-- Enlaces a redes sociales -->
                     <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
                     <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
                     <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
@@ -173,12 +183,14 @@
                 <h4>Sobre Nosotros</h4>
                 <p>Full House Vintage, tu destino para moda vintage auténtica y sostenible desde 2025.</p>
                 <div class="social-links">
+                    <!-- Enlaces a redes sociales -->
                     <a href="#"><img src="IMGs/fb.png" alt="Facebook" class="social-icon"></a>
                     <a href="#"><img src="IMGs/inst.png" alt="Instagram" class="social-icon"></a>
                     <a href="#"><img src="IMGs/X.png" alt="Twitter" class="social-icon"></a>
                 </div>
             </div>
 
+            <!-- Enlaces rápidos en el footer -->
             <div class="footer-section">
                 <h4>Enlaces Rápidos</h4>
                 <ul class="footer-links">
@@ -189,6 +201,7 @@
                 </ul>
             </div>
 
+            <!-- Sección de ayuda en el footer -->
             <div class="footer-section">
                 <h4>Ayuda</h4>
                 <ul class="footer-links">
@@ -199,6 +212,7 @@
                 </ul>
             </div>
 
+            <!-- Información de contacto en el footer -->
             <div class="footer-section">
                 <h4>Contacto</h4>
                 <ul class="footer-links">
@@ -209,6 +223,7 @@
             </div>
         </div>
 
+        <!-- Derechos reservados -->
         <div class="footer-bottom">
             <p>&copy; 2025 Full House Vintage. Todos los derechos reservados.</p>
         </div>

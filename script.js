@@ -94,34 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 2000);
 });
 
-// Variables para el slider
-let counter = 1;
-const totalSlides = 4;
-const slides = document.querySelectorAll('input[name="radio-btn"]');
-
-// Función para el slider automático
-function autoSlide() {
-    document.getElementById('radio' + counter).checked = true;
-    counter++;
-    
-    // Transición suave al volver al principio
-    if (counter > totalSlides) {
-        counter = 1;
-        // Pequeña pausa antes de reiniciar
-        setTimeout(() => {
-            document.getElementById('radio1').checked = true;
-            // Aplicar transición suave
-            document.querySelector('.slides').style.transition = 'none';
-            setTimeout(() => {
-                document.querySelector('.slides').style.transition = '2s';
-            }, 50);
-        }, 2000);
-    }
-}
-
-// Aumentamos el intervalo para dar tiempo a la transición
-setInterval(autoSlide, 5000);
-
 // Código para el manejo de cookies
 document.addEventListener('DOMContentLoaded', function() {
     const cookieNotice = document.getElementById('cookieNotice');
