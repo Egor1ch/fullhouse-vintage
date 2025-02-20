@@ -1,256 +1,231 @@
 {
   "products": [
     {
-      "id": 111,
-      "name": "Chaqueta Vintage 70s",
-      "description": "Chaqueta original de los años 70 en excelente estado",
-      "price": 89.99,
-      "image": "IMGs/1.jpeg",
+      "id": 1,
+      "name": "Burberrys vintage trench coat",
+      "description": "Gabardina de hombre de los años 80, en perfecto estado",
+      "price": 225.99,
+      "image": "IMGS/Catalogo/burberry-trench/3.jpeg",
       "additionalImages": [
-        "IMGs/2.jpeg",
-        "IMGs/3.jpeg",
-        "IMGs/4.jpeg"
+        "IMGS/Catalogo/burberry-trench/3.jpeg",
+        "IMGS/Catalogo/burberry-trench/1.jpeg",
+        "IMGS/Catalogo/burberry-trench/2.jpeg",
+        "IMGS/Catalogo/burberry-trench/4.jpeg"
       ],
-      "category": "ropa",
-      "decade": "70s",
+      "category": "Ropa",
+      "decade": "80s",
       "condition": "Excelente",
-      "size": "M",
+      "size": "XL",
       "details": {
-        "Materiales": "Cuero",
-        "Marca": "Vintage Original",
-        "Color": "Marrón",
+        "Materiales": "Algodón",
+        "Marca": "Burberrys",
+        "Color": "Beige",
         "Referencia": "CH70-001"
-      }
+      },
+      "featured": true
     },
     {
       "id": 2,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "YvesSaintLaurent vintage sweater",
+      "description": "Jersey de hombre de los años 2000, en perfecto estado",
+      "price": 75.00,
+      "image": "IMGS/Catalogo/ysl-sw/2.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/ysl-sw/2.jpeg",
+        "IMGS/Catalogo/ysl-sw/1.jpeg",
+        "IMGS/Catalogo/ysl-sw/3.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
-      "condition": "Bueno",
-      "size": "M",
+      "category": "Ropa",
+      "decade": "00s",
+      "condition": "Excelente",
+      "size": "L",
       "details": {
         "Materiales": "Algodón",
-        "Marca": "Boutique Vintage",
-        "Color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
+        "Marca": "Yves Saint Laurent",
+        "Color": "Crema",
+        "Referencia": "CH70-002"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Diesel vintage bum bag",
+      "description": "Autentico bolso DIESEL estilo gym, en perfecto estado",
+      "price": 45.00,
+      "image": "IMGS/Catalogo/diesel-bag/1.jpeg",
+      "additionalImages": [
+        "IMGS/Catalogo/diesel-bag/1.jpeg",
+        "IMGS/Catalogo/diesel-bag/2.jpeg"
+      ],
+      "category": "Bolsos",
+      "decade": "00s",
+      "condition": "Excelente",
+      "size": "Grande",
+      "details": {
+        "Materiales": "Algodón",
+        "Marca": "Diesel",
+        "Color": "Negro",
+        "Referencia": "CH70-003"
+      }
     },
     {
       "id": 4,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "YvesSaintLaurent cashmere and wool coat",
+      "description": "Precioso abrigo vintage de lana y cashmere",
+      "price": 120.00,
+      "image": "IMGS/Catalogo/ysl-coat/2.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/ysl-coat/2.jpeg",
+        "IMGS/Catalogo/ysl-coat/3.jpeg",
+        "IMGS/Catalogo/ysl-coat/1.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
-      "condition": "Bueno",
-      "size": "M",
+      "category": "Ropa",
+      "decade": "00s",
+      "condition": "Excelente",
+      "size": "L",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
+        "Materiales": "Lana, Cashmere",
+        "Marca": "Yves Saint Laurent",
+        "Color": "Naranja",
+        "Referencia": "CH70-004"
+      }
     },
     {
       "id": 5,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "Vintage Stone Island paper shell jacket",
+      "description": "Increíble chaqueta vintage muy complicada de encontrar",
+      "price": 400.00,
+      "image": "IMGS/Catalogo/stone-jack/2.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/stone-jack/2.jpeg",
+        "IMGS/Catalogo/stone-jack/3.jpeg",
+        "IMGS/Catalogo/stone-jack/1.jpeg",
+        "IMGS/Catalogo/stone-jack/4.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
-      "condition": "Bueno",
-      "size": "S",
+      "category": "Ropa",
+      "decade": "00s",
+      "condition": "Excelente",
+      "size": "L",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
+        "Materiales": "Nylon",
+        "Marca": "Stone Island",
+        "Color": "Gris claro",
+        "Referencia": "CH70-005"
       },
-      "featured" : true
+      "featured": true
     },
     {
       "id": 6,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "Nike vintage swoosh backpack",
+      "description": "Canonica mochilla vintage de Nike",
+      "price": 25.00,
+      "image": "IMGS/Catalogo/nike-bag/3.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/nike-bag/3.jpeg",
+        "IMGS/Catalogo/nike-bag/1.jpeg",
+        "IMGS/Catalogo/nike-bag/2.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
+      "category": "Bolsos",
+      "decade": "90s",
       "condition": "Bueno",
-      "size": "S",
+      "size": "Grande",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
+        "Materiales": "Poliéster",
+        "Marca": "Nike",
+        "Color": "Azul con gris",
+        "Referencia": "CH70-006"
+      }
     },
     {
       "id": 7,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "George Gina & Lucy vintage Ubergirl bag",
+      "description": "Icreíble bolso vintage de estilo Y2K",
+      "price": 90.00,
+      "image": "IMGS/Catalogo/ggl-bag/2.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/ggl-bag/2.jpeg",
+        "IMGS/Catalogo/ggl-bag/1.jpeg",
+        "IMGS/Catalogo/ggl-bag/3.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
+      "category": "Bolsos",
+      "decade": "00s",
       "condition": "Bueno",
-      "size": "S",
+      "size": "Grande",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
+        "Materiales": "Poliéster",
+        "Marca": "George Gina & Lucy",
+        "Color": "Negro",
+        "Referencia": "CH70-007"
       },
-      "featured" : true
+      "featured": true
     },
     {
       "id": 8,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "Burberry shoulder bag",
+      "description": "Precioso bolso de la primera marca de lujo de la historia",
+      "price": 90.00,
+      "image": "IMGS/Catalogo/burberry-bag/3.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/burberry-bag/3.jpeg",
+        "IMGS/Catalogo/burberry-bag/2.jpeg",
+        "IMGS/Catalogo/burberry-bag/4.jpeg",
+        "IMGS/Catalogo/burberry-bag/1.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
+      "category": "Bolsos",
+      "decade": "00s",
       "condition": "Bueno",
-      "size": "S",
+      "size": "Medio",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
+        "Materiales": "Cuero",
+        "Marca": "Burberrys",
+        "Color": "Nova",
+        "Referencia": "CH70-008"
+      }
     },
     {
       "id": 9,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "Polo Fred Perry",
+      "description": "Clásico polo elegante de la marca casual",
+      "price": 25.00,
+      "image": "IMGS/Catalogo/fredperry-polo/3.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/fredperry-polo/3.jpeg",
+        "IMGS/Catalogo/fredperry-polo/2.jpeg",
+        "IMGS/Catalogo/fredperry-polo/4.jpeg",
+        "IMGS/Catalogo/fredperry-polo/1.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
-      "condition": "Bueno",
-      "size": "S",
+      "category": "Ropa",
+      "decade": "00s",
+      "condition": "Nuevo",
+      "size": "XS",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
+        "Materiales": "Algodón",
+        "Marca": "Fred Perry",
+        "Color": "Naranja",
+        "Referencia": "CH70-009"
+      }
     },
     {
       "id": 10,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
+      "name": "Yohji Yamamoto X Adidas oversize Japanese shirt",
+      "description": "Una prenda de diseñador japonés increíble, muy complicada de encontrar",
+      "price": 220.00,
+      "image": "IMGS/Catalogo/y3-shirt/4.jpeg",
       "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
+        "IMGS/Catalogo/y3-shirt/4.jpeg",
+        "IMGS/Catalogo/y3-shirt/3.jpeg",
+        "IMGS/Catalogo/y3-shirt/2.jpeg",
+        "IMGS/Catalogo/y3-shirt/1.jpeg"
       ],
-      "category": "ropa",
-      "decade": "60s",
+      "category": "Ropa",
+      "decade": "00s",
       "condition": "Bueno",
-      "size": "S",
+      "size": "Oversize S",
       "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
-    },
-    {
-      "id": 11,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
-      "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
-      ],
-      "category": "ropa",
-      "decade": "60s",
-      "condition": "Bueno",
-      "size": "S",
-      "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
-    },
-    {
-      "id": 12,
-      "name": "Vestido Retro 60s",
-      "description": "Vestido estilo mod de los 60s en perfectas condiciones",
-      "price": 75.99,
-      "image": "IMGs/1.jpeg",
-      "additionalImages": [
-        "IMGs/1.jpeg",
-        "IMGs/1.jpeg",
-        "IMGs/3.jpeg"
-      ],
-      "category": "ropa",
-      "decade": "60s",
-      "condition": "Bueno",
-      "size": "S",
-      "details": {
-        "material": "Algodón",
-        "marca": "Boutique Vintage",
-        "color": "Azul",
-        "referencia": "VR60-002"
-      },
-      "featured" : true
+        "Materiales": "Algodón",
+        "Marca": "Adidas Y3",
+        "Color": "Negro con blanco",
+        "Referencia": "CH70-010"
+      }
     }
   ]
 }
