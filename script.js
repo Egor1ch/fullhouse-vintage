@@ -641,7 +641,7 @@ function displayProducts(productsToShow) {
     productsGrid.innerHTML = '';
     
     if (productsToShow.length === 0) {
-        productsGrid.innerHTML = '<div class="no-results">No se encontraron productos</div>';
+        productsGrid.innerHTML = '<div class="no-results">No se encontraron productos que coincidan con tu búsqueda</div>';
         return;
     }
 
@@ -649,11 +649,13 @@ function displayProducts(productsToShow) {
         const productHTML = `
             <article class="product-card">
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}">
+                    <a href="producto.html?id=${product.id}" class="product-link">
+                        <img src="${product.image}" alt="${product.name}">
+                    </a>
                 </div>
                 <div class="product-info">
                     <div class="product-details">
-                        <h3>${product.name}</h3>
+                        <h3><a href="producto.html?id=${product.id}">${product.name}</a></h3>
                         <p class="product-description">${product.description || ''}</p>
                     </div>
                     <div class="product-bottom">
@@ -674,7 +676,14 @@ function searchProducts(query) {
     if (!window.products) return;
     
     query = query.toLowerCase().trim();
+    const productsGrid = document.getElementById('productsGrid');
     
+    if (!productsGrid) {
+        // Si no estamos en la página de catálogo, redirigir con el parámetro de búsqueda
+        window.location.href = `catalogo.html?search=${encodeURIComponent(query)}`;
+        return;
+    }
+
     if (!query) {
         displayProducts(window.products);
         return;
@@ -692,15 +701,26 @@ function searchProducts(query) {
 
 // Event listeners para la búsqueda
 document.addEventListener('DOMContentLoaded', function() {
-    // Cargar productos al iniciar
-    loadProducts();
+    // Cargar productos y verificar parámetros de búsqueda
+    loadProducts().then(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        
+        if (searchQuery) {
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.value = searchQuery;
+            }
+            searchProducts(searchQuery);
+        }
+    });
     
     // Configurar búsqueda
     const searchInput = document.querySelector('.search-input');
-    let searchTimeout;
-
     if (searchInput) {
-        // Evento input para búsqueda en tiempo real
+        let searchTimeout;
+
+        // Búsqueda en tiempo real
         searchInput.addEventListener('input', function() {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
@@ -716,6 +736,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 searchProducts(searchInput.value);
             });
         }
+    }
+});
+
+// Event listener para la barra de búsqueda
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-input');
+    let searchTimeout;
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchProducts(this.value);
+            }, 300); // Esperar 300ms después de que el usuario deje de escribir
+        });
+
+        // Prevenir que el formulario se envíe al presionar Enter
+        searchInput.closest('form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            searchProducts(searchInput.value);
+        });
     }
 });
 
@@ -770,27 +811,6 @@ function searchProducts(query) {
         productsGrid.innerHTML += productHTML;
     });
 }
-
-// Event listener para la barra de búsqueda
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.querySelector('.search-input');
-    let searchTimeout;
-
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                searchProducts(this.value);
-            }, 300); // Esperar 300ms después de que el usuario deje de escribir
-        });
-
-        // Prevenir que el formulario se envíe al presionar Enter
-        searchInput.closest('form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            searchProducts(searchInput.value);
-        });
-    }
-});
 
 // Función para manejar la búsqueda desde cualquier página
 function handleSearch(event) {
