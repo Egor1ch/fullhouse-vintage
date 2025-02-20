@@ -1276,6 +1276,7 @@ nav {
         padding: 0.5rem 1rem;
         border: none; /* Eliminado el borde inferior */
     }
+
     /* ...rest of existing code... */
 }
 
@@ -1501,7 +1502,7 @@ nav {
 }
 
 /* Estilos para la página Sobre Nosotros */
-.-hero {
+.about-hero {
     height: 60vh;
     background-image: url('IMGs/4.png'); /* Actualizada la ruta de la imagen */
     background-size: cover;
@@ -1626,6 +1627,13 @@ nav {
     line-height: 1.5;
 }
 
+/* Media query para móviles */
+@media (max-width: 768px) {
+    .value-card img {
+        width: 400px; /* Tamaño más pequeño en móviles */
+        height: 400px;
+    }
+}
 
 .values-section h2 {
     text-align: center;
